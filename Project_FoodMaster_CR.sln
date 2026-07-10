@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36603.0 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project_FoodMaster_CR", "Project_FoodMaster_CR\Project_FoodMaster_CR.csproj", "{B2D1C300-FA05-423B-847A-B4830262B9EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B2D1C300-FA05-423B-847A-B4830262B9EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2D1C300-FA05-423B-847A-B4830262B9EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2D1C300-FA05-423B-847A-B4830262B9EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2D1C300-FA05-423B-847A-B4830262B9EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F6D20D34-A222-4D0A-AC79-88F116C9F7A1}
+	EndGlobalSection
+EndGlobal
