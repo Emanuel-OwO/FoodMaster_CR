@@ -4,12 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project_FoodMaster_CR.Layer.Entities
+namespace appFoodMaster_CR.Layer.Entities
 {
     public class Cliente
     {
-        //Primera prueba para saber si sirbe el git lad
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public string IdCliente { set; get; }
+        public string TipoIdentificacion { set; get; }
+        public string Nombre { set; get; }
+        public string PrimerApellido { set; get; }
+        public string SegundoApellido { set; get; }
+        public string Sexo { set; get; }
+        public string Telefono { set; get; }
+        public string Correo { set; get; }
+        public int IdProvincia { set; get; }
+        public string Direccion { set; get; }
+        public byte[] Fotografia { set; get; }
+        public bool Estado { set; get; }
     }
 }

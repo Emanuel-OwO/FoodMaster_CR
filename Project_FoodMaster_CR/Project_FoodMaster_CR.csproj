@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{B2D1C300-FA05-423B-847A-B4830262B9EE}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Project_FoodMaster_CR</RootNamespace>
+    <RootNamespace>appFoodMaster_CR</RootNamespace>
     <AssemblyName>Project_FoodMaster_CR</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -46,13 +46,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Layer\Entities\Cliente.cs" />
+    <Compile Include="Layer\Entities\Factura.cs" />
+    <Compile Include="Layer\Entities\FacturaDetalle.cs" />
+    <Compile Include="Layer\Entities\Impuesto.cs" />
+    <Compile Include="Layer\Entities\MovimientoInventario.cs" />
+    <Compile Include="Layer\Entities\Perfil.cs" />
+    <Compile Include="Layer\Entities\Producto.cs" />
+    <Compile Include="Layer\Entities\Provincia.cs" />
+    <Compile Include="Layer\Entities\Tarjeta.cs" />
+    <Compile Include="Layer\Entities\TipoProducto.cs" />
+    <Compile Include="Layer\Entities\Usuario.cs" />
+    <Compile Include="Layer\UI\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Layer\UI\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Layer\Entities\Cliente.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -63,6 +73,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -81,6 +92,12 @@
     <Folder Include="Document\" />
     <Folder Include="Enums\" />
     <Folder Include="Factories\" />
+    <Folder Include="Layer\BLL\" />
+    <Folder Include="Layer\DAL\" />
+    <Folder Include="Layer\DTO\" />
+    <Folder Include="Layer\Factory\" />
+    <Folder Include="Layer\Interfaces\" />
+    <Folder Include="Layer\Persistencia\" />
     <Folder Include="Utilitarios\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
