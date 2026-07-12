@@ -1,0 +1,19 @@
+﻿using appFoodMaster_CR.Layer.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace appFoodMaster_CR.Layer.Interfaces.IDAL
+{
+    public interface IDALCliente
+    {
+        void CREATE(Cliente cliente);
+        void UPDATE(Cliente cliente);
+        void DELETE(int id);
+        List<Cliente> SelectAll();
+        Cliente SelectById(int id);
+        List<Cliente> Get_By_Filter(string pDescripcion);
+    }
+}

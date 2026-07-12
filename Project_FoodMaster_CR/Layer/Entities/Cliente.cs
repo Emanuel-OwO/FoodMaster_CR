@@ -8,17 +8,18 @@ namespace appFoodMaster_CR.Layer.Entities
 {
     public class Cliente
     {
-        public string IdCliente { set; get; }
-        public string TipoIdentificacion { set; get; }
-        public string Nombre { set; get; }
-        public string PrimerApellido { set; get; }
-        public string SegundoApellido { set; get; }
-        public string Sexo { set; get; }
-        public string Telefono { set; get; }
-        public string Correo { set; get; }
-        public int IdProvincia { set; get; }
-        public string Direccion { set; get; }
-        public byte[] Fotografia { set; get; }
-        public bool Estado { set; get; }
+        public int IdCliente { get; set; }
+        public string TipoIdentificacion { get; set; }  
+        public string Identificacion { get; set; }       
+        public string Nombre { get; set; }
+        public string PrimerApellido { get; set; }
+        public string SegundoApellido { get; set; }
+        public string Sexo { get; set; }
+        public string Telefono { get; set; }
+        public string Correo { get; set; }
+        public int IdProvincia { get; set; }
+        public string Direccion { get; set; }
+        public byte[] Fotografia { get; set; }
+        public bool Estado { get; set; }
     }
 }

@@ -57,10 +57,27 @@
     <Compile Include="Layer\Entities\Tarjeta.cs" />
     <Compile Include="Layer\Entities\TipoProducto.cs" />
     <Compile Include="Layer\Entities\Usuario.cs" />
-    <Compile Include="Layer\UI\frmLogin.cs">
+    <Compile Include="Layer\Interfaces\IBLL\IBLLReporte.cs" />
+    <Compile Include="Layer\Interfaces\IBLL\IBLLTipoProducto.cs" />
+    <Compile Include="Layer\Interfaces\IBLL\IBLLCliente.cs" />
+    <Compile Include="Layer\Interfaces\IBLL\IBLLFactura.cs" />
+    <Compile Include="Layer\Interfaces\IBLL\IBLLFacturaDetalle.cs" />
+    <Compile Include="Layer\Interfaces\IBLL\IBLLMovimientoInventario.cs" />
+    <Compile Include="Layer\Interfaces\IBLL\IBLLProducto.cs" />
+    <Compile Include="Layer\Interfaces\IBLL\IBLLUsuario.cs" />
+    <Compile Include="Layer\Interfaces\IDAL\IDALCliente.cs" />
+    <Compile Include="Layer\Interfaces\IDAL\IDALFactura.cs" />
+    <Compile Include="Layer\Interfaces\IDAL\IDALFacturaDetalle.cs" />
+    <Compile Include="Layer\Interfaces\IDAL\IDALMovimientoInventario.cs" />
+    <Compile Include="Layer\Interfaces\IDAL\IDALProducto.cs" />
+    <Compile Include="Layer\Interfaces\IDAL\IDALProvincia.cs" />
+    <Compile Include="Layer\Interfaces\IDAL\IDALReporte.cs" />
+    <Compile Include="Layer\Interfaces\IDAL\IDALTipoProducto.cs" />
+    <Compile Include="Layer\Interfaces\IDAL\IDALUsuario.cs" />
+    <Compile Include="Layer\UI\Login\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Layer\UI\frmLogin.Designer.cs">
+    <Compile Include="Layer\UI\Login\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -96,8 +113,12 @@
     <Folder Include="Layer\DAL\" />
     <Folder Include="Layer\DTO\" />
     <Folder Include="Layer\Factory\" />
-    <Folder Include="Layer\Interfaces\" />
     <Folder Include="Layer\Persistencia\" />
+    <Folder Include="Layer\UI\Filtros\" />
+    <Folder Include="Layer\UI\Mantenimientos\" />
+    <Folder Include="Layer\UI\Procesos\" />
+    <Folder Include="Layer\UI\Reportes\" />
+    <Folder Include="Layer\UI\Seguridad\" />
     <Folder Include="Utilitarios\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
