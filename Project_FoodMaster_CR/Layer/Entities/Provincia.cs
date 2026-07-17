@@ -1,4 +1,5 @@
-﻿using System;
+﻿using appFoodMaster_CR.Layer.Interfaces.IDAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,5 +11,7 @@ namespace appFoodMaster_CR.Layer.Entities
     {
         public int IdProvincia { set; get; }
         public string Descripcion { set; get; }
+
+        public override string ToString() => IdProvincia + " " + Descripcion;
     }
 }

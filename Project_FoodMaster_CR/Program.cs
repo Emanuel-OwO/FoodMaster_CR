@@ -1,4 +1,5 @@
 ﻿using appFoodMaster_CR.Layer.UI;
+using appFoodMaster_CR.Layer.UI.Login;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,15 @@ namespace Project_FoodMaster_CR
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLogin());
+
+            frmLogin frmLogin = new frmLogin();
+
+            frmLogin.ShowDialog();
+
+            if (frmLogin.DialogResult == DialogResult.OK)
+            {
+                Application.Run(new frmMenu());
+            }
         }
     }
 }

@@ -11,8 +11,8 @@ namespace appFoodMaster_CR.Layer.Interfaces.IDAL
     {
         List<Provincia> GetAll();
         Provincia GetById(int pId);
-        Provincia Save(Provincia pBodega);
-        Provincia Update(Provincia pBodega);
+        Provincia Save(Provincia pProvincia);
+        Provincia Update(Provincia pProvincia);
         bool Delete(int pId);
     }
 }

@@ -9,11 +9,11 @@ namespace appFoodMaster_CR.Layer.Interfaces.IDAL
 {
     public interface IDALCliente
     {
-        void CREATE(Cliente cliente);
+        void INSERT(Cliente cliente);
         void UPDATE(Cliente cliente);
-        void DELETE(int id);
+        void DELETE(int idCliente);
         List<Cliente> SelectAll();
-        Cliente SelectById(int id);
+        Cliente SelectById(int idCliente);
         List<Cliente> Get_By_Filter(string pDescripcion);
     }
 }
