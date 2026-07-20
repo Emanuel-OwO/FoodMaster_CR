@@ -109,7 +109,7 @@ namespace appFoodMaster_CR.Layer.UI.Mantenimientos
                 }
 
 
-                // ToDo: Cree La validación que solo permita números en la cédula 
+                // Se hace la validación que solo permita números en la cédula 
 
                 PadronElectoral oPadronDTO = bLLPadron.GetById(txtIdentificacion.Text.Trim());
 
@@ -170,7 +170,7 @@ namespace appFoodMaster_CR.Layer.UI.Mantenimientos
             txtPrimerApellido.Text = row.Cells["PrimerApellido"].Value?.ToString() ?? "";
             txtSegundoApellido.Text = row.Cells["SegundoApellido"].Value?.ToString() ?? "";
 
-            // 🔥 Provincia (más seguro)
+          
             if (row.Cells["IdProvincia"].Value != null)
             {
                 cmbProvincia.SelectedValue = row.Cells["IdProvincia"].Value;
@@ -180,7 +180,7 @@ namespace appFoodMaster_CR.Layer.UI.Mantenimientos
             txtCorreo.Text = row.Cells["Correo"].Value?.ToString() ?? "";
             txtDescripcion.Text = row.Cells["Direccion"].Value?.ToString() ?? "";
 
-            // 🖼️ Imagen segura
+     
             if (row.Cells["Fotografia"].Value != null)
             {
                 byte[] fotoBytes = row.Cells["Fotografia"].Value as byte[];
@@ -201,12 +201,12 @@ namespace appFoodMaster_CR.Layer.UI.Mantenimientos
                 pctFoto.Tag = null;
             }
 
-            // ✅ Estado
+          
             bool estado = Convert.ToBoolean(row.Cells["Estado"].Value ?? false);
             rdoActivo.Checked = estado;
             rdoInactivo.Checked = !estado;
 
-            // ✅ Sexo
+           
             string sexo = row.Cells["Sexo"].Value?.ToString() ?? "";
             rdoMasculino.Checked = sexo == "M";
             rdoFemenino.Checked = sexo == "F";
@@ -230,15 +230,15 @@ namespace appFoodMaster_CR.Layer.UI.Mantenimientos
 
                 cliente.IdCliente = Convert.ToInt32(dgvDatos.CurrentRow.Cells["IdCliente"].Value);
 
-                // FIX — campos correctos (estaban invertidos)
-                cliente.TipoIdentificacion = txtTipoID.Text;          // ← "Nacional", "N", etc.
-                cliente.Identificacion = txtIdentificacion.Text;  // ← "208520175"
+               
+                cliente.TipoIdentificacion = txtTipoID.Text;          
+                cliente.Identificacion = txtIdentificacion.Text;  
                 cliente.Nombre = txtNombre.Text;
                 cliente.PrimerApellido = txtPrimerApellido.Text;
                 cliente.SegundoApellido = txtSegundoApellido.Text;
                 cliente.IdProvincia = Convert.ToInt32(cmbProvincia.SelectedValue);
                 cliente.Telefono = mskTelefono.Text.Trim().Replace("-", "");
-                cliente.Correo = txtCorreo.Text.Trim();   // ← asegurate de este
+                cliente.Correo = txtCorreo.Text.Trim();   
                 cliente.Direccion = txtDescripcion.Text;
                 cliente.Fotografia = (byte[])pctFoto.Tag;
                 cliente.Estado = rdoActivo.Checked;
@@ -294,11 +294,11 @@ namespace appFoodMaster_CR.Layer.UI.Mantenimientos
             }
 
             BLLCliente oClienteBLL = new BLLCliente();
-            oClienteBLL.INSERT(cliente); // 🔥 CLAVE
+            oClienteBLL.INSERT(cliente);
 
             MessageBox.Show("Cliente agregado correctamente");
 
-            CargarUsuarios(); // 🔥 recarga el grid
+            CargarUsuarios(); 
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)

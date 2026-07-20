@@ -114,5 +114,26 @@ namespace appFoodMaster_CR.Layer.UI.Login
             frmMantenimientoCliente.MdiParent = this;
             frmMantenimientoCliente.Show();
         }
+
+        private void toolStripMenuItemMantenimientoProducto_Click(object sender, EventArgs e)
+        {
+            frmMantenimientoProducto frmMantenimientoProducto = new frmMantenimientoProducto();
+            frmMantenimientoProducto.MdiParent = this;
+            frmMantenimientoProducto.Show();
+        }
+
+        private void toolStripMenuItemMantenimientoTipoProducto_Click(object sender, EventArgs e)
+        {
+            frmMantenimientoTipoProducto frmMantenimientoTipoProducto = new frmMantenimientoTipoProducto();
+            frmMantenimientoTipoProducto.MdiParent = this;
+            frmMantenimientoTipoProducto.Show();
+        }
+
+        private void toolStripMenuItemMantenimientoImpuesto_Click(object sender, EventArgs e)
+        {
+            frmMantenimientoImpuesto frmMantenimientoImpuesto = new frmMantenimientoImpuesto();
+            frmMantenimientoImpuesto.MdiParent = this;
+            frmMantenimientoImpuesto.Show();
+        }
     }
 }

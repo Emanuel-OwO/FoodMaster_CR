@@ -91,6 +91,7 @@
     <Compile Include="Layer\BLL\BLLCliente.cs" />
     <Compile Include="Layer\BLL\BLLFactura.cs" />
     <Compile Include="Layer\BLL\BLLFacturaDetalle.cs" />
+    <Compile Include="Layer\BLL\BLLImpuesto.cs" />
     <Compile Include="Layer\BLL\BLLMovimientoInventario.cs" />
     <Compile Include="Layer\BLL\BLLPadron.cs" />
     <Compile Include="Layer\BLL\BLLProducto.cs" />
@@ -99,7 +100,10 @@
     <Compile Include="Layer\BLL\BLLTipoProducto.cs" />
     <Compile Include="Layer\BLL\BLLUsuario.cs" />
     <Compile Include="Layer\DAL\DALCliente.cs" />
+    <Compile Include="Layer\DAL\DALImpuesto.cs" />
+    <Compile Include="Layer\DAL\DALProducto.cs" />
     <Compile Include="Layer\DAL\DALProvincia.cs" />
+    <Compile Include="Layer\DAL\DALTipoProducto.cs" />
     <Compile Include="Layer\DAL\DALUsuario.cs" />
     <Compile Include="Layer\Entities\Cliente.cs" />
     <Compile Include="Layer\Entities\Factura.cs" />
@@ -113,6 +117,7 @@
     <Compile Include="Layer\Entities\Tarjeta.cs" />
     <Compile Include="Layer\Entities\TipoProducto.cs" />
     <Compile Include="Layer\Entities\Usuario.cs" />
+    <Compile Include="Layer\Interfaces\IBLL\IBLLImpuesto.cs" />
     <Compile Include="Layer\Interfaces\IBLL\IBLLPadron.cs" />
     <Compile Include="Layer\Interfaces\IBLL\IBLLReporte.cs" />
     <Compile Include="Layer\Interfaces\IBLL\IBLLTipoProducto.cs" />
@@ -125,6 +130,7 @@
     <Compile Include="Layer\Interfaces\IDAL\IDALCliente.cs" />
     <Compile Include="Layer\Interfaces\IDAL\IDALFactura.cs" />
     <Compile Include="Layer\Interfaces\IDAL\IDALFacturaDetalle.cs" />
+    <Compile Include="Layer\Interfaces\IDAL\IDALImpuesto.cs" />
     <Compile Include="Layer\Interfaces\IDAL\IDALMovimientoInventario.cs" />
     <Compile Include="Layer\Interfaces\IDAL\IDALProducto.cs" />
     <Compile Include="Layer\Interfaces\IDAL\IDALProvincia.cs" />
@@ -135,6 +141,18 @@
     <Compile Include="Layer\Persistencia\FactoryConexion.cs" />
     <Compile Include="Layer\Persistencia\FactoryDataBase.cs" />
     <Compile Include="Layer\Persistencia\IDataBase.cs" />
+    <Compile Include="Layer\UI\Filtros\frmFiltroClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layer\UI\Filtros\frmFiltroClientes.Designer.cs">
+      <DependentUpon>frmFiltroClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layer\UI\Filtros\frmFiltroProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layer\UI\Filtros\frmFiltroProductos.Designer.cs">
+      <DependentUpon>frmFiltroProductos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Layer\UI\Login\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +171,72 @@
     <Compile Include="Layer\UI\Mantenimientos\frmMantenimientoCliente.Designer.cs">
       <DependentUpon>frmMantenimientoCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Layer\UI\Mantenimientos\frmMantenimientoImpuesto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layer\UI\Mantenimientos\frmMantenimientoImpuesto.Designer.cs">
+      <DependentUpon>frmMantenimientoImpuesto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layer\UI\Mantenimientos\frmMantenimientoProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layer\UI\Mantenimientos\frmMantenimientoProducto.Designer.cs">
+      <DependentUpon>frmMantenimientoProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layer\UI\Mantenimientos\frmMantenimientoTipoProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layer\UI\Mantenimientos\frmMantenimientoTipoProducto.Designer.cs">
+      <DependentUpon>frmMantenimientoTipoProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layer\UI\Procesos\frmFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layer\UI\Procesos\frmFactura.Designer.cs">
+      <DependentUpon>frmFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layer\UI\Procesos\frmFirma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layer\UI\Procesos\frmFirma.Designer.cs">
+      <DependentUpon>frmFirma.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layer\UI\Reportes\frmReporteClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layer\UI\Reportes\frmReporteClientes.Designer.cs">
+      <DependentUpon>frmReporteClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layer\UI\Reportes\frmReporteGrafico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layer\UI\Reportes\frmReporteGrafico.Designer.cs">
+      <DependentUpon>frmReporteGrafico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layer\UI\Reportes\frmReporteProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layer\UI\Reportes\frmReporteProductos.Designer.cs">
+      <DependentUpon>frmReporteProductos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layer\UI\Reportes\frmReportesFacturas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layer\UI\Reportes\frmReportesFacturas.Designer.cs">
+      <DependentUpon>frmReportesFacturas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layer\UI\Seguridad\frmInformacionEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layer\UI\Seguridad\frmInformacionEmpresa.Designer.cs">
+      <DependentUpon>frmInformacionEmpresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layer\UI\Seguridad\frmUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layer\UI\Seguridad\frmUsuario.Designer.cs">
+      <DependentUpon>frmUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilitarios\util\Cryptography.cs" />
@@ -164,6 +248,12 @@
     <Compile Include="Utilitarios\util\UtilError.cs" />
     <Compile Include="Utilitarios\util\UtilitariosCode.cs" />
     <Compile Include="Utilitarios\util\Utils.cs" />
+    <EmbeddedResource Include="Layer\UI\Filtros\frmFiltroClientes.resx">
+      <DependentUpon>frmFiltroClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Layer\UI\Filtros\frmFiltroProductos.resx">
+      <DependentUpon>frmFiltroProductos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Layer\UI\Login\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -172,6 +262,36 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Layer\UI\Mantenimientos\frmMantenimientoCliente.resx">
       <DependentUpon>frmMantenimientoCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Layer\UI\Mantenimientos\frmMantenimientoImpuesto.resx">
+      <DependentUpon>frmMantenimientoImpuesto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Layer\UI\Mantenimientos\frmMantenimientoProducto.resx">
+      <DependentUpon>frmMantenimientoProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Layer\UI\Mantenimientos\frmMantenimientoTipoProducto.resx">
+      <DependentUpon>frmMantenimientoTipoProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Layer\UI\Procesos\frmFactura.resx">
+      <DependentUpon>frmFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Layer\UI\Procesos\frmFirma.resx">
+      <DependentUpon>frmFirma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Layer\UI\Reportes\frmReporteClientes.resx">
+      <DependentUpon>frmReporteClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Layer\UI\Reportes\frmReporteGrafico.resx">
+      <DependentUpon>frmReporteGrafico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Layer\UI\Reportes\frmReporteProductos.resx">
+      <DependentUpon>frmReporteProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Layer\UI\Reportes\frmReportesFacturas.resx">
+      <DependentUpon>frmReportesFacturas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Layer\UI\Seguridad\frmUsuario.resx">
+      <DependentUpon>frmUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -203,10 +323,6 @@
     <Folder Include="Factories\" />
     <Folder Include="Layer\DTO\" />
     <Folder Include="Layer\Factory\" />
-    <Folder Include="Layer\UI\Filtros\" />
-    <Folder Include="Layer\UI\Procesos\" />
-    <Folder Include="Layer\UI\Reportes\" />
-    <Folder Include="Layer\UI\Seguridad\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\LogoFoodMasterCr.png" />

@@ -45,9 +45,9 @@
             this.toolStripMenuItemSalir = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemFactura = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemMantenimientoImpuesto = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemMantenimientoTipoProducto = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemMantenimientoProducto = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemMantenimientoCliente = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemMantenimientos = new System.Windows.Forms.ToolStripMenuItem();
@@ -168,23 +168,26 @@
             this.toolStripMenuItem7.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem7.Text = "Stock";
             // 
-            // toolStripMenuItem6
+            // toolStripMenuItemMantenimientoImpuesto
             // 
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItem6.Text = "Proveedor";
+            this.toolStripMenuItemMantenimientoImpuesto.Name = "toolStripMenuItemMantenimientoImpuesto";
+            this.toolStripMenuItemMantenimientoImpuesto.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemMantenimientoImpuesto.Text = "Impuesto";
+            this.toolStripMenuItemMantenimientoImpuesto.Click += new System.EventHandler(this.toolStripMenuItemMantenimientoImpuesto_Click);
             // 
-            // toolStripMenuItem5
+            // toolStripMenuItemMantenimientoTipoProducto
             // 
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItem5.Text = "Tipo Dispositivo";
+            this.toolStripMenuItemMantenimientoTipoProducto.Name = "toolStripMenuItemMantenimientoTipoProducto";
+            this.toolStripMenuItemMantenimientoTipoProducto.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemMantenimientoTipoProducto.Text = "Tipo Producto";
+            this.toolStripMenuItemMantenimientoTipoProducto.Click += new System.EventHandler(this.toolStripMenuItemMantenimientoTipoProducto_Click);
             // 
-            // toolStripMenuItem4
+            // toolStripMenuItemMantenimientoProducto
             // 
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItem4.Text = "Producto";
+            this.toolStripMenuItemMantenimientoProducto.Name = "toolStripMenuItemMantenimientoProducto";
+            this.toolStripMenuItemMantenimientoProducto.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemMantenimientoProducto.Text = "Producto";
+            this.toolStripMenuItemMantenimientoProducto.Click += new System.EventHandler(this.toolStripMenuItemMantenimientoProducto_Click);
             // 
             // toolStripMenuItem3
             // 
@@ -204,9 +207,9 @@
             this.toolStripMenuItemMantenimientos.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemMantenimientoCliente,
             this.toolStripMenuItem3,
-            this.toolStripMenuItem4,
-            this.toolStripMenuItem5,
-            this.toolStripMenuItem6,
+            this.toolStripMenuItemMantenimientoProducto,
+            this.toolStripMenuItemMantenimientoTipoProducto,
+            this.toolStripMenuItemMantenimientoImpuesto,
             this.toolStripMenuItem7});
             this.toolStripMenuItemMantenimientos.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItemMantenimientos.Image")));
             this.toolStripMenuItemMantenimientos.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
@@ -311,9 +314,9 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSalir;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemFactura;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemMantenimientoImpuesto;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemMantenimientoTipoProducto;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemMantenimientoProducto;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemMantenimientoCliente;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemMantenimientos;
