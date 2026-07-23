@@ -176,7 +176,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Name = "frmMantenimientoImpuesto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmMantenimientoImpuesto";
+            this.Text = "MantenimientoImpuesto";
             this.Load += new System.EventHandler(this.frmMantenimientoImpuesto_Load);
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();

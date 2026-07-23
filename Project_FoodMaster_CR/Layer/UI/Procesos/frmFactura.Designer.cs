@@ -31,28 +31,22 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFactura));
             this.txtTotalDolares = new System.Windows.Forms.TextBox();
+            this.txtTotalColones = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.dtpFecha = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnFiltroCliente = new System.Windows.Forms.Button();
+            this.label21 = new System.Windows.Forms.Label();
+            this.txtTipoTarjerta = new System.Windows.Forms.TextBox();
+            this.txtNroTarjeta = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.btnNuevaFactura = new System.Windows.Forms.ToolStripButton();
             this.btnFacturar = new System.Windows.Forms.ToolStripButton();
             this.btnEliminar = new System.Windows.Forms.ToolStripButton();
             this.btnSalir = new System.Windows.Forms.ToolStripButton();
-            this.txtTotalColones = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.picFirma = new System.Windows.Forms.PictureBox();
-            this.dtpFecha = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cmbBanco = new System.Windows.Forms.ComboBox();
-            this.btnFiltroCliente = new System.Windows.Forms.Button();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.txtNroReferencia = new System.Windows.Forms.TextBox();
-            this.txtTipoTarjerta = new System.Windows.Forms.TextBox();
-            this.txtNroTarjeta = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.txtDolar = new System.Windows.Forms.TextBox();
@@ -68,7 +62,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtCantidad = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.cmbTipoPago = new System.Windows.Forms.ComboBox();
             this.txtProducto = new System.Windows.Forms.TextBox();
             this.txtCelular = new System.Windows.Forms.TextBox();
             this.txtCedula = new System.Windows.Forms.TextBox();
@@ -87,10 +80,10 @@
             this.btnFirmar = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.label5 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.picFirma)).BeginInit();
+            this.picFirma = new System.Windows.Forms.PictureBox();
             this.toolStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picFirma)).BeginInit();
             this.SuspendLayout();
             // 
             // txtTotalDolares
@@ -99,42 +92,6 @@
             this.txtTotalDolares.Name = "txtTotalDolares";
             this.txtTotalDolares.Size = new System.Drawing.Size(100, 20);
             this.txtTotalDolares.TabIndex = 237;
-            // 
-            // btnNuevaFactura
-            // 
-            this.btnNuevaFactura.Image = ((System.Drawing.Image)(resources.GetObject("btnNuevaFactura.Image")));
-            this.btnNuevaFactura.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnNuevaFactura.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnNuevaFactura.Name = "btnNuevaFactura";
-            this.btnNuevaFactura.Size = new System.Drawing.Size(151, 68);
-            this.btnNuevaFactura.Text = "Nueva Factura";
-            // 
-            // btnFacturar
-            // 
-            this.btnFacturar.Image = ((System.Drawing.Image)(resources.GetObject("btnFacturar.Image")));
-            this.btnFacturar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnFacturar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnFacturar.Name = "btnFacturar";
-            this.btnFacturar.Size = new System.Drawing.Size(118, 68);
-            this.btnFacturar.Text = "Facturar";
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
-            this.btnEliminar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(118, 68);
-            this.btnEliminar.Text = "Eliminar";
-            // 
-            // btnSalir
-            // 
-            this.btnSalir.Image = ((System.Drawing.Image)(resources.GetObject("btnSalir.Image")));
-            this.btnSalir.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(97, 68);
-            this.btnSalir.Text = "Salir";
             // 
             // txtTotalColones
             // 
@@ -161,17 +118,6 @@
             this.label10.TabIndex = 234;
             this.label10.Text = "Total Dolares";
             // 
-            // picFirma
-            // 
-            this.picFirma.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picFirma.Location = new System.Drawing.Point(246, 588);
-            this.picFirma.Margin = new System.Windows.Forms.Padding(2);
-            this.picFirma.Name = "picFirma";
-            this.picFirma.Size = new System.Drawing.Size(174, 121);
-            this.picFirma.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picFirma.TabIndex = 233;
-            this.picFirma.TabStop = false;
-            // 
             // dtpFecha
             // 
             this.dtpFecha.Location = new System.Drawing.Point(146, 183);
@@ -188,14 +134,6 @@
             this.label2.TabIndex = 231;
             this.label2.Text = "Fecha";
             // 
-            // cmbBanco
-            // 
-            this.cmbBanco.FormattingEnabled = true;
-            this.cmbBanco.Location = new System.Drawing.Point(102, 484);
-            this.cmbBanco.Name = "cmbBanco";
-            this.cmbBanco.Size = new System.Drawing.Size(141, 21);
-            this.cmbBanco.TabIndex = 230;
-            // 
             // btnFiltroCliente
             // 
             this.btnFiltroCliente.Location = new System.Drawing.Point(15, 277);
@@ -204,15 +142,7 @@
             this.btnFiltroCliente.TabIndex = 229;
             this.btnFiltroCliente.Text = "Buscar Cliente";
             this.btnFiltroCliente.UseVisualStyleBackColor = true;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(22, 525);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(88, 13);
-            this.label22.TabIndex = 228;
-            this.label22.Text = "Trasnferir/SINPE";
+            this.btnFiltroCliente.Click += new System.EventHandler(this.btnFiltroCliente_Click);
             // 
             // label21
             // 
@@ -222,13 +152,6 @@
             this.label21.Size = new System.Drawing.Size(43, 13);
             this.label21.TabIndex = 227;
             this.label21.Text = " Tarjeta";
-            // 
-            // txtNroReferencia
-            // 
-            this.txtNroReferencia.Location = new System.Drawing.Point(143, 551);
-            this.txtNroReferencia.Name = "txtNroReferencia";
-            this.txtNroReferencia.Size = new System.Drawing.Size(100, 20);
-            this.txtNroReferencia.TabIndex = 226;
             // 
             // txtTipoTarjerta
             // 
@@ -243,24 +166,6 @@
             this.txtNroTarjeta.Name = "txtNroTarjeta";
             this.txtNroTarjeta.Size = new System.Drawing.Size(100, 20);
             this.txtNroTarjeta.TabIndex = 224;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(22, 554);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(79, 13);
-            this.label17.TabIndex = 223;
-            this.label17.Text = "Nro Referencia";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(18, 483);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(38, 13);
-            this.label18.TabIndex = 222;
-            this.label18.Text = "Banco";
             // 
             // label19
             // 
@@ -292,6 +197,45 @@
             this.toolStrip2.Size = new System.Drawing.Size(946, 71);
             this.toolStrip2.TabIndex = 219;
             this.toolStrip2.Text = "toolStrip2";
+            // 
+            // btnNuevaFactura
+            // 
+            this.btnNuevaFactura.Image = ((System.Drawing.Image)(resources.GetObject("btnNuevaFactura.Image")));
+            this.btnNuevaFactura.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnNuevaFactura.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnNuevaFactura.Name = "btnNuevaFactura";
+            this.btnNuevaFactura.Size = new System.Drawing.Size(151, 68);
+            this.btnNuevaFactura.Text = "Nueva Factura";
+            this.btnNuevaFactura.Click += new System.EventHandler(this.btnNuevaFactura_Click);
+            // 
+            // btnFacturar
+            // 
+            this.btnFacturar.Image = ((System.Drawing.Image)(resources.GetObject("btnFacturar.Image")));
+            this.btnFacturar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnFacturar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnFacturar.Name = "btnFacturar";
+            this.btnFacturar.Size = new System.Drawing.Size(118, 68);
+            this.btnFacturar.Text = "Facturar";
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
+            this.btnEliminar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(118, 68);
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.Image = ((System.Drawing.Image)(resources.GetObject("btnSalir.Image")));
+            this.btnSalir.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(97, 68);
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // txtPrecio
             // 
@@ -407,14 +351,6 @@
             this.label8.TabIndex = 205;
             this.label8.Text = "Telefono";
             // 
-            // cmbTipoPago
-            // 
-            this.cmbTipoPago.FormattingEnabled = true;
-            this.cmbTipoPago.Location = new System.Drawing.Point(142, 218);
-            this.cmbTipoPago.Name = "cmbTipoPago";
-            this.cmbTipoPago.Size = new System.Drawing.Size(141, 21);
-            this.cmbTipoPago.TabIndex = 204;
-            // 
             // txtProducto
             // 
             this.txtProducto.Location = new System.Drawing.Point(320, 312);
@@ -449,6 +385,7 @@
             this.txtEstado.Name = "txtEstado";
             this.txtEstado.Size = new System.Drawing.Size(100, 20);
             this.txtEstado.TabIndex = 199;
+            this.txtEstado.TextChanged += new System.EventHandler(this.txtEstado_TextChanged);
             // 
             // txtUsuario
             // 
@@ -519,12 +456,13 @@
             // 
             // btnCalcularFactura
             // 
-            this.btnCalcularFactura.Location = new System.Drawing.Point(23, 649);
+            this.btnCalcularFactura.Location = new System.Drawing.Point(29, 602);
             this.btnCalcularFactura.Name = "btnCalcularFactura";
             this.btnCalcularFactura.Size = new System.Drawing.Size(113, 23);
             this.btnCalcularFactura.TabIndex = 189;
             this.btnCalcularFactura.Text = "Calcular Factura";
             this.btnCalcularFactura.UseVisualStyleBackColor = true;
+            this.btnCalcularFactura.Click += new System.EventHandler(this.btnCalcularFactura_Click);
             // 
             // btnFiltroProducto
             // 
@@ -534,15 +472,17 @@
             this.btnFiltroProducto.TabIndex = 188;
             this.btnFiltroProducto.Text = "Buscar Producto";
             this.btnFiltroProducto.UseVisualStyleBackColor = true;
+            this.btnFiltroProducto.Click += new System.EventHandler(this.btnFiltroProducto_Click);
             // 
             // btnFirmar
             // 
-            this.btnFirmar.Location = new System.Drawing.Point(23, 606);
+            this.btnFirmar.Location = new System.Drawing.Point(29, 559);
             this.btnFirmar.Name = "btnFirmar";
             this.btnFirmar.Size = new System.Drawing.Size(75, 23);
             this.btnFirmar.TabIndex = 187;
             this.btnFirmar.Text = "Firmar";
             this.btnFirmar.UseVisualStyleBackColor = true;
+            this.btnFirmar.Click += new System.EventHandler(this.btnFirmar_Click);
             // 
             // statusStrip1
             // 
@@ -552,14 +492,16 @@
             this.statusStrip1.TabIndex = 186;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // label5
+            // picFirma
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(17, 221);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(71, 13);
-            this.label5.TabIndex = 194;
-            this.label5.Text = "Tipo de Pago";
+            this.picFirma.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picFirma.Location = new System.Drawing.Point(252, 541);
+            this.picFirma.Margin = new System.Windows.Forms.Padding(2);
+            this.picFirma.Name = "picFirma";
+            this.picFirma.Size = new System.Drawing.Size(174, 121);
+            this.picFirma.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picFirma.TabIndex = 233;
+            this.picFirma.TabStop = false;
             // 
             // frmFactura
             // 
@@ -573,15 +515,10 @@
             this.Controls.Add(this.picFirma);
             this.Controls.Add(this.dtpFecha);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.cmbBanco);
             this.Controls.Add(this.btnFiltroCliente);
-            this.Controls.Add(this.label22);
             this.Controls.Add(this.label21);
-            this.Controls.Add(this.txtNroReferencia);
             this.Controls.Add(this.txtTipoTarjerta);
             this.Controls.Add(this.txtNroTarjeta);
-            this.Controls.Add(this.label17);
-            this.Controls.Add(this.label18);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.toolStrip2);
@@ -599,7 +536,6 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtCantidad);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.cmbTipoPago);
             this.Controls.Add(this.txtProducto);
             this.Controls.Add(this.txtCelular);
             this.Controls.Add(this.txtCedula);
@@ -617,13 +553,14 @@
             this.Controls.Add(this.btnFiltroProducto);
             this.Controls.Add(this.btnFirmar);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.label5);
             this.Name = "frmFactura";
-            this.Text = "frmFactura";
-            ((System.ComponentModel.ISupportInitialize)(this.picFirma)).EndInit();
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Factura";
+            this.Load += new System.EventHandler(this.frmFactura_Load);
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picFirma)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -642,15 +579,10 @@
         private System.Windows.Forms.PictureBox picFirma;
         private System.Windows.Forms.DateTimePicker dtpFecha;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cmbBanco;
         private System.Windows.Forms.Button btnFiltroCliente;
-        private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox txtNroReferencia;
         private System.Windows.Forms.TextBox txtTipoTarjerta;
         private System.Windows.Forms.TextBox txtNroTarjeta;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.ToolStrip toolStrip2;
@@ -669,7 +601,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtCantidad;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox cmbTipoPago;
         private System.Windows.Forms.TextBox txtProducto;
         private System.Windows.Forms.TextBox txtCelular;
         private System.Windows.Forms.TextBox txtCedula;
@@ -688,6 +619,5 @@
         private System.Windows.Forms.Button btnFirmar;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.Label label5;
     }
 }

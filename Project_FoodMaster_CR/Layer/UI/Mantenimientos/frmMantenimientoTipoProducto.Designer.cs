@@ -213,7 +213,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Name = "frmMantenimientoTipoProducto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmMantenimientoTipoProducto";
+            this.Text = "MantenimientoTipoProducto";
             this.Load += new System.EventHandler(this.frmMantenimientoTipoProducto_Load);
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();

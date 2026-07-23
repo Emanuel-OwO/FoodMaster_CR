@@ -61,6 +61,7 @@
             this.btnBuscarProducto.Name = "btnBuscarProducto";
             this.btnBuscarProducto.Size = new System.Drawing.Size(110, 68);
             this.btnBuscarProducto.Text = "Buscar";
+            this.btnBuscarProducto.Click += new System.EventHandler(this.btnBuscarProducto_Click);
             // 
             // btnEditar
             // 
@@ -79,6 +80,7 @@
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(97, 68);
             this.btnSalir.Text = "Salir";
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // statusStrip1
             // 
@@ -111,6 +113,8 @@
             this.dgvDatos.Name = "dgvDatos";
             this.dgvDatos.Size = new System.Drawing.Size(776, 298);
             this.dgvDatos.TabIndex = 128;
+            this.dgvDatos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellClick);
+            this.dgvDatos.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellContentDoubleClick);
             // 
             // frmFiltroProductos
             // 
@@ -124,6 +128,7 @@
             this.Controls.Add(this.dgvDatos);
             this.Name = "frmFiltroProductos";
             this.Text = "frmFiltroProductos";
+            this.Load += new System.EventHandler(this.frmFiltroProductos_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();

@@ -11,7 +11,7 @@ namespace appFoodMaster_CR.Layer.Entities
         public int IdFactura { set; get; }
         public string NumeroFactura { set; get; }
         public DateTime Fecha { set; get; }
-        public string IdCliente { set; get; }
+        public int IdCliente { set; get; }
         public int IdUsuario { set; get; }
         public double Subtotal { set; get; }
         public double PorcentajeImpuestoAplicado { set; get; }

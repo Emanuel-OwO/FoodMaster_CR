@@ -382,7 +382,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Name = "frmMantenimientoProducto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmMantenimientoProducto";
+            this.Text = "MantenimientoProducto";
             this.Load += new System.EventHandler(this.frmMantenimientoProducto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pctDocumento)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctFoto)).EndInit();

@@ -86,10 +86,10 @@ VALUES
             List<Producto> lista = new List<Producto>();
             DataSet ds = null;
 
-            string sql = @"SELECT IdProducto, CodigoInterno, Modelo, Precio, CantidadStock
+            string sql = @"SELECT IdProducto, CodigoInterno, Descripcion, Precio, CantidadStock
                    FROM Producto
                    WHERE Estado = 1
-                   AND (CodigoInterno LIKE @Filtro OR Modelo LIKE @Filtro)";
+                   AND (CodigoInterno LIKE @Filtro OR Descripcion LIKE @Filtro)";
 
             SqlCommand command = new SqlCommand();
 
@@ -110,6 +110,7 @@ VALUES
                     {
                         IdProducto = Convert.ToInt32(dr["IdProducto"]),
                         CodigoInterno = dr["CodigoInterno"].ToString(),
+                        Descripcion = dr["Descripcion"].ToString(),
                         Precio = Convert.ToDouble(dr["Precio"]),
                         CantidadStock = Convert.ToInt32(dr["CantidadStock"])
                     });

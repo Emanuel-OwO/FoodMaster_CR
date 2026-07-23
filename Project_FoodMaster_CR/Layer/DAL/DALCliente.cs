@@ -98,9 +98,7 @@ namespace appFoodMaster_CR.Layer.DAL
                     command.Parameters.AddWithValue("@Direccion", cliente.Direccion);
                     command.Parameters.AddWithValue("@Fotografia",
                         (object)cliente.Fotografia ?? DBNull.Value);
-                    // usp_INSERT_Cliente NO tiene @Estado (lo hardcodea en 1 internamente)
 
-                    // usp_INSERT_Cliente devuelve el IdCliente generado por OUTPUT
                     var outId = new SqlParameter("@IdCliente", SqlDbType.Int)
                     {
                         Direction = ParameterDirection.Output

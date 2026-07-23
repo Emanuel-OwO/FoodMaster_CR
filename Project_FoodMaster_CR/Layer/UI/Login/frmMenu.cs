@@ -1,4 +1,5 @@
 ﻿using appFoodMaster_CR.Layer.UI.Mantenimientos;
+using appFoodMaster_CR.Layer.UI.Procesos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -134,6 +135,14 @@ namespace appFoodMaster_CR.Layer.UI.Login
             frmMantenimientoImpuesto frmMantenimientoImpuesto = new frmMantenimientoImpuesto();
             frmMantenimientoImpuesto.MdiParent = this;
             frmMantenimientoImpuesto.Show();
+        }
+
+        private void toolStripMenuItemFactura_Click(object sender, EventArgs e)
+        {
+
+            frmFactura frmFactura = new frmFactura();
+            frmFactura.MdiParent = this;
+            frmFactura.Show();
         }
     }
 }

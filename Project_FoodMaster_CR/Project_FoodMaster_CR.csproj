@@ -89,6 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Layer\BLL\BLLCliente.cs" />
+    <Compile Include="Layer\BLL\BLLDolar.cs" />
     <Compile Include="Layer\BLL\BLLFactura.cs" />
     <Compile Include="Layer\BLL\BLLFacturaDetalle.cs" />
     <Compile Include="Layer\BLL\BLLImpuesto.cs" />
@@ -97,14 +98,22 @@
     <Compile Include="Layer\BLL\BLLProducto.cs" />
     <Compile Include="Layer\BLL\BLLProvincia.cs" />
     <Compile Include="Layer\BLL\BLLReporte.cs" />
+    <Compile Include="Layer\BLL\BLLTarjeta.cs" />
     <Compile Include="Layer\BLL\BLLTipoProducto.cs" />
     <Compile Include="Layer\BLL\BLLUsuario.cs" />
     <Compile Include="Layer\DAL\DALCliente.cs" />
+    <Compile Include="Layer\DAL\DALFacturaDetalle.cs" />
+    <Compile Include="Layer\DAL\DALFactura.cs" />
     <Compile Include="Layer\DAL\DALImpuesto.cs" />
     <Compile Include="Layer\DAL\DALProducto.cs" />
     <Compile Include="Layer\DAL\DALProvincia.cs" />
+    <Compile Include="Layer\DAL\DALTarjeta.cs" />
     <Compile Include="Layer\DAL\DALTipoProducto.cs" />
     <Compile Include="Layer\DAL\DALUsuario.cs" />
+    <Compile Include="Layer\DTO\DolarDTO.cs" />
+    <Compile Include="Layer\DTO\FacturaReporteDTO.cs" />
+    <Compile Include="Layer\DTO\ProductoVendidoReporteDTO.cs" />
+    <Compile Include="Layer\DTO\VentasPorFechaDTO.cs" />
     <Compile Include="Layer\Entities\Cliente.cs" />
     <Compile Include="Layer\Entities\Factura.cs" />
     <Compile Include="Layer\Entities\FacturaDetalle.cs" />
@@ -117,9 +126,11 @@
     <Compile Include="Layer\Entities\Tarjeta.cs" />
     <Compile Include="Layer\Entities\TipoProducto.cs" />
     <Compile Include="Layer\Entities\Usuario.cs" />
+    <Compile Include="Layer\Interfaces\IBLL\IBLLDolar.cs" />
     <Compile Include="Layer\Interfaces\IBLL\IBLLImpuesto.cs" />
     <Compile Include="Layer\Interfaces\IBLL\IBLLPadron.cs" />
     <Compile Include="Layer\Interfaces\IBLL\IBLLReporte.cs" />
+    <Compile Include="Layer\Interfaces\IBLL\IBLLTarjeta.cs" />
     <Compile Include="Layer\Interfaces\IBLL\IBLLTipoProducto.cs" />
     <Compile Include="Layer\Interfaces\IBLL\IBLLCliente.cs" />
     <Compile Include="Layer\Interfaces\IBLL\IBLLFactura.cs" />
@@ -132,6 +143,7 @@
     <Compile Include="Layer\Interfaces\IDAL\IDALFacturaDetalle.cs" />
     <Compile Include="Layer\Interfaces\IDAL\IDALImpuesto.cs" />
     <Compile Include="Layer\Interfaces\IDAL\IDALMovimientoInventario.cs" />
+    <Compile Include="Layer\Interfaces\IDAL\IDALTarjeta.cs" />
     <Compile Include="Layer\Interfaces\IDAL\IDALProducto.cs" />
     <Compile Include="Layer\Interfaces\IDAL\IDALProvincia.cs" />
     <Compile Include="Layer\Interfaces\IDAL\IDALReporte.cs" />
@@ -321,7 +333,6 @@
     <Folder Include="Document\" />
     <Folder Include="Enums\" />
     <Folder Include="Factories\" />
-    <Folder Include="Layer\DTO\" />
     <Folder Include="Layer\Factory\" />
   </ItemGroup>
   <ItemGroup>

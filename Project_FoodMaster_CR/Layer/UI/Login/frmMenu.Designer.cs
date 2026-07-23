@@ -146,7 +146,7 @@
             // toolStripMenuItemConsultarDolar
             // 
             this.toolStripMenuItemConsultarDolar.Name = "toolStripMenuItemConsultarDolar";
-            this.toolStripMenuItemConsultarDolar.Size = new System.Drawing.Size(156, 22);
+            this.toolStripMenuItemConsultarDolar.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItemConsultarDolar.Text = "Consultar Dolar";
             // 
             // toolStripMenuItemSalir
@@ -159,8 +159,9 @@
             // toolStripMenuItemFactura
             // 
             this.toolStripMenuItemFactura.Name = "toolStripMenuItemFactura";
-            this.toolStripMenuItemFactura.Size = new System.Drawing.Size(156, 22);
+            this.toolStripMenuItemFactura.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItemFactura.Text = "Facturar";
+            this.toolStripMenuItemFactura.Click += new System.EventHandler(this.toolStripMenuItemFactura_Click);
             // 
             // toolStripMenuItem7
             // 
