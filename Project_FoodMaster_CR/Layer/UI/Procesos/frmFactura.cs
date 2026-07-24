@@ -1,5 +1,6 @@
 ﻿using appFoodMaster_CR.Layer.BLL;
 using appFoodMaster_CR.Layer.Entities;
+using appFoodMaster_CR.Layer.Interfaces.IBLL;
 using appFoodMaster_CR.Layer.UI.Filtros;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,8 @@ namespace appFoodMaster_CR.Layer.UI.Procesos
         private int _idProductoSeleccionado = 0;
         private int _stockProductoSeleccionado = 0;
         private string _codigoProductoSeleccionado = "";
+        private double _precioProductoSeleccionado = 0;
+        private double _tipoCambioActual = 0;
 
         private byte[] _firmaClienteBytes = null;
         private Producto producto;
@@ -41,10 +44,12 @@ namespace appFoodMaster_CR.Layer.UI.Procesos
 
         private void frmFactura_Load(object sender, EventArgs e)
         {
+
+
             ConfigurarGrid();
             txtUsuario.Text = Properties.Settings.Default.Login + " - " + Properties.Settings.Default.Nombre;
-           
-
+            IniciarNuevaFactura();
+            CargarTipoCambio();
         }
 
         private void ConfigurarGrid()
@@ -118,7 +123,7 @@ namespace appFoodMaster_CR.Layer.UI.Procesos
                     {
                         Cliente c = frm.cliente;
                         _idClienteSeleccionado = c.IdCliente;
-                        correoClienteSeleccionado = c.Correo ?? ""; 
+                        correoClienteSeleccionado = c.Correo ?? "";
 
                         txtNombreCliente.Text = c.Nombre + " "
                                               + c.PrimerApellido + " "
@@ -236,6 +241,12 @@ namespace appFoodMaster_CR.Layer.UI.Procesos
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void btnFacturar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
         private void LimpiarProducto()
         {
             _idProductoSeleccionado = 0;
@@ -276,11 +287,10 @@ namespace appFoodMaster_CR.Layer.UI.Procesos
                 decimal impuesto = _bllFactura.CalcularIVA(subtotal);
                 decimal totalColones = _bllFactura.CalcularTotalColones(subtotal, impuesto);
 
-                decimal tipoCambio = 1m;
+                // FIX: se usa el double guardado al cargar el tipo de cambio,
+                // NO se vuelve a parsear txtDolar.Text (mismo bug que el precio).
+                decimal tipoCambio = (decimal)_tipoCambioActual;
                 decimal totalDolares = 0m;
-
-                if (decimal.TryParse(txtDolar.Text.Replace(",", ""), out decimal tc) && tc > 0)
-                    tipoCambio = tc;
 
                 if (tipoCambio > 0)
                     totalDolares = _bllFactura.CalcularTotalDolares(totalColones, tipoCambio);
@@ -306,9 +316,10 @@ namespace appFoodMaster_CR.Layer.UI.Procesos
             _stockProductoSeleccionado = 0;
             // Cabecera
             txtNumeroFactura.Text = "Pendiente";
+            txtNumeroFactura.ReadOnly = true;
             dtpFecha.Value = DateTime.Now;
-            txtUsuario.Text = "";
             txtEstado.Text = "Activa";
+
 
             // Cliente
             txtNombreCliente.Text = "";
@@ -337,9 +348,29 @@ namespace appFoodMaster_CR.Layer.UI.Procesos
 
         }
 
+        private void CargarTipoCambio()
+        {
+            try
+            {
+                _tipoCambioActual = _bllDolar.GetVentaDolar();
+                txtDolar.Text = _tipoCambioActual.ToString("N2");
+            }
+            catch (Exception ex)
+            {
+                _tipoCambioActual = 0;
+                txtDolar.Text = "";
+                MessageBox.Show(
+                    "No se pudo obtener el tipo de cambio del dólar. " +
+                    "Verifique su conexión a internet.\n\n" + ex.Message,
+                    "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
         private void txtEstado_TextChanged(object sender, EventArgs e)
         {
 
         }
+
+
     }
 }

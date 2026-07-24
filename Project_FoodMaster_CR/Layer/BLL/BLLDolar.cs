@@ -19,7 +19,7 @@ namespace appFoodMaster_CR.Layer.BLL
             try
             {
                 String json = "";
-                string URLPadron = ConfigurationManager.AppSettings["DolarVenta"];
+                string URLPadron = ConfigurationManager.AppSettings["URLDolar"];
                 string url = URLPadron;
 
                 WebRequest request = WebRequest.Create(url);
@@ -35,10 +35,10 @@ namespace appFoodMaster_CR.Layer.BLL
                 return oDolarDTO.venta.valor;
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                String error = ex.Message;
+                return 0;
             }
         }
     }

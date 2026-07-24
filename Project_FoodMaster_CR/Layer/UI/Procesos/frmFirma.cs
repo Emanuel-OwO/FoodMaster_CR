@@ -23,27 +23,17 @@ namespace appFoodMaster_CR.Layer.UI.Procesos
         public frmFirma()
         {
             InitializeComponent();
-            this.Load += (s, e) =>
-            {
-                _lienzo = new Bitmap(pnlFirma.Width, pnlFirma.Height);
-                using (var g = Graphics.FromImage(_lienzo)) g.Clear(Color.White); // fondo blanco
-                pnlFirma.BackgroundImage = _lienzo;
-                pnlFirma.BackgroundImageLayout = ImageLayout.None;
-            };
-
-            pnlFirma.MouseDown += pnlFirma_MouseDown;
-            pnlFirma.MouseMove += pnlFirma_MouseMove;
-            pnlFirma.MouseUp += pnlFirma_MouseUp;
-
-            // Usa tus handlers existentes:
-            btnLimpieza.Click += btnLimpieza_Click;
-            btnAceptar.Click += btnAceptar_Click;
-            btnCancelar.Click += btnCancelar_Click;
+           
         }
 
         private void frmFirma_Load(object sender, EventArgs e)
         {
+            _lienzo = new Bitmap(pnlFirma.Width, pnlFirma.Height);
+            using (var g = Graphics.FromImage(_lienzo))
+                g.Clear(Color.White);   // fondo blanco
 
+            pnlFirma.BackgroundImage = _lienzo;
+            pnlFirma.BackgroundImageLayout = ImageLayout.None;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -59,6 +49,7 @@ namespace appFoodMaster_CR.Layer.UI.Procesos
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            DialogResult = DialogResult.Cancel;
             this.Close();
         }
 

@@ -216,6 +216,7 @@
             this.btnFacturar.Name = "btnFacturar";
             this.btnFacturar.Size = new System.Drawing.Size(118, 68);
             this.btnFacturar.Text = "Facturar";
+            this.btnFacturar.Click += new System.EventHandler(this.btnFacturar_Click);
             // 
             // btnEliminar
             // 
