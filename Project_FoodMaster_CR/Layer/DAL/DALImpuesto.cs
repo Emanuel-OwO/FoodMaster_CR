@@ -135,5 +135,38 @@ namespace appFoodMaster_CR.Layer.DAL
                 MessageBox.Show(er.Message);
             }
         }
+
+
+
+        public Impuesto ObtenerVigente(DateTime? fecha)
+        {
+            try
+            {
+                using (var db = FactoryDatabase.CreateDataBase(FactoryConexion.CreateConnection()))
+                {
+                    var command = new SqlCommand("usp_SELECT_Impuesto_Vigente");
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@Fecha",
+                        fecha.HasValue ? (object)fecha.Value.Date : DBNull.Value);
+
+                    var ds = db.ExecuteReader(command, "Impuesto");
+                    if (ds.Tables[0].Rows.Count == 0) return null;
+
+                    DataRow dr = ds.Tables[0].Rows[0];
+                    return new Impuesto
+                    {
+                        Fecha = Convert.ToDateTime(dr["Fecha"]),
+                        Porcentaje = Convert.ToDouble(dr["Porcentaje"])
+                    };
+                }
+            }
+            catch (Exception er)
+            {
+                _log.Error("Error ObtenerVigente Impuesto", er);
+                throw;
+            }
+        }
     }
+
+
 }

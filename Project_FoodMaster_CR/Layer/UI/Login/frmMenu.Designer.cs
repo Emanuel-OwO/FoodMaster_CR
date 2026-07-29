@@ -89,12 +89,14 @@
             this.toolStripMenuCambiarUsuario.Name = "toolStripMenuCambiarUsuario";
             this.toolStripMenuCambiarUsuario.Size = new System.Drawing.Size(171, 68);
             this.toolStripMenuCambiarUsuario.Text = "Cambiar Usuario";
+            this.toolStripMenuCambiarUsuario.Click += new System.EventHandler(this.toolStripMenuCambiarUsuario_Click);
             // 
             // ToolStripMenuItemUsuarios
             // 
             this.ToolStripMenuItemUsuarios.Name = "ToolStripMenuItemUsuarios";
-            this.ToolStripMenuItemUsuarios.Size = new System.Drawing.Size(119, 22);
+            this.ToolStripMenuItemUsuarios.Size = new System.Drawing.Size(180, 22);
             this.ToolStripMenuItemUsuarios.Text = "Usuarios";
+            this.ToolStripMenuItemUsuarios.Click += new System.EventHandler(this.ToolStripMenuItemUsuarios_Click);
             // 
             // toolStripMenuItemAdministracion
             // 
@@ -146,7 +148,7 @@
             // toolStripMenuItemConsultarDolar
             // 
             this.toolStripMenuItemConsultarDolar.Name = "toolStripMenuItemConsultarDolar";
-            this.toolStripMenuItemConsultarDolar.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemConsultarDolar.Size = new System.Drawing.Size(156, 22);
             this.toolStripMenuItemConsultarDolar.Text = "Consultar Dolar";
             // 
             // toolStripMenuItemSalir
@@ -159,47 +161,47 @@
             // toolStripMenuItemFactura
             // 
             this.toolStripMenuItemFactura.Name = "toolStripMenuItemFactura";
-            this.toolStripMenuItemFactura.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemFactura.Size = new System.Drawing.Size(156, 22);
             this.toolStripMenuItemFactura.Text = "Facturar";
             this.toolStripMenuItemFactura.Click += new System.EventHandler(this.toolStripMenuItemFactura_Click);
             // 
             // toolStripMenuItem7
             // 
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(150, 22);
             this.toolStripMenuItem7.Text = "Stock";
             // 
             // toolStripMenuItemMantenimientoImpuesto
             // 
             this.toolStripMenuItemMantenimientoImpuesto.Name = "toolStripMenuItemMantenimientoImpuesto";
-            this.toolStripMenuItemMantenimientoImpuesto.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemMantenimientoImpuesto.Size = new System.Drawing.Size(150, 22);
             this.toolStripMenuItemMantenimientoImpuesto.Text = "Impuesto";
             this.toolStripMenuItemMantenimientoImpuesto.Click += new System.EventHandler(this.toolStripMenuItemMantenimientoImpuesto_Click);
             // 
             // toolStripMenuItemMantenimientoTipoProducto
             // 
             this.toolStripMenuItemMantenimientoTipoProducto.Name = "toolStripMenuItemMantenimientoTipoProducto";
-            this.toolStripMenuItemMantenimientoTipoProducto.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemMantenimientoTipoProducto.Size = new System.Drawing.Size(150, 22);
             this.toolStripMenuItemMantenimientoTipoProducto.Text = "Tipo Producto";
             this.toolStripMenuItemMantenimientoTipoProducto.Click += new System.EventHandler(this.toolStripMenuItemMantenimientoTipoProducto_Click);
             // 
             // toolStripMenuItemMantenimientoProducto
             // 
             this.toolStripMenuItemMantenimientoProducto.Name = "toolStripMenuItemMantenimientoProducto";
-            this.toolStripMenuItemMantenimientoProducto.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemMantenimientoProducto.Size = new System.Drawing.Size(150, 22);
             this.toolStripMenuItemMantenimientoProducto.Text = "Producto";
             this.toolStripMenuItemMantenimientoProducto.Click += new System.EventHandler(this.toolStripMenuItemMantenimientoProducto_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(150, 22);
             this.toolStripMenuItem3.Text = "Marca";
             // 
             // toolStripMenuItemMantenimientoCliente
             // 
             this.toolStripMenuItemMantenimientoCliente.Name = "toolStripMenuItemMantenimientoCliente";
-            this.toolStripMenuItemMantenimientoCliente.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemMantenimientoCliente.Size = new System.Drawing.Size(150, 22);
             this.toolStripMenuItemMantenimientoCliente.Text = "Cliente";
             this.toolStripMenuItemMantenimientoCliente.Click += new System.EventHandler(this.toolStripMenuItemMantenimientoCliente_Click);
             // 

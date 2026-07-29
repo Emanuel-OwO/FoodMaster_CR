@@ -116,7 +116,8 @@
             this.Controls.Add(this.dgvDatos);
             this.Controls.Add(this.statusStrip1);
             this.Name = "frmFiltroClientes";
-            this.Text = "frmFiltroClientes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "FiltroClientes";
             this.Load += new System.EventHandler(this.frmFiltroClientes_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

@@ -85,6 +85,7 @@ namespace appFoodMaster_CR.Layer.UI
                 Properties.Settings.Default.Login = oUsuario.NombreUsuario;
                 Properties.Settings.Default.Nombre = oUsuario.Nombre + " " + oUsuario.PrimerApellido;
                 Properties.Settings.Default.RolId = oUsuario.IdPerfil.ToString();
+                Properties.Settings.Default.IdUsuario = oUsuario.IdUsuario;
                 Properties.Settings.Default.Save();
 
                 this.DialogResult = DialogResult.OK;

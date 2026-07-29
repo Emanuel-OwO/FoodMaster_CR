@@ -88,7 +88,8 @@
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
             this.Name = "frmFirma";
-            this.Text = "frmFirma";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Firma";
             this.Load += new System.EventHandler(this.frmFirma_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pnlFirma)).EndInit();
             this.ResumeLayout(false);

@@ -76,19 +76,17 @@ namespace appFoodMaster_CR.Layer.BLL
         {
             if (factura == null)
                 throw new Exception("La facturación no puede ser nula.");
-            if (string.IsNullOrWhiteSpace(factura.NumeroFactura))
-                throw new Exception("El número de factura es obligatorio.");
+
             if (factura.IdCliente <= 0)
                 throw new Exception("Debe seleccionar un cliente válido.");
+
             if (factura.IdUsuario <= 0)
                 throw new Exception("Debe existir un usuario válido.");
+
             if (factura.TotalColones <= 0)
                 throw new Exception("El total en colones debe ser mayor a cero.");
 
-            // Estado es bool (activa/anulada), no un código de texto.
-            // Toda factura nueva nace activa.
             factura.Estado = true;
-
             return _objDALFactura.Insert(factura);
         }
 

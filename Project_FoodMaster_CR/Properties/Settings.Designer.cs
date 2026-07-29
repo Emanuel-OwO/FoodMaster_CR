@@ -58,5 +58,16 @@ namespace appFoodMaster_CR.Properties {
                 this["RolId"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public int IdUsuario {
+            get {
+                return ((int)(this["IdUsuario"]));
+            }
+            set {
+                this["IdUsuario"] = value;
+            }
+        }
     }
 }

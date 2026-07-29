@@ -14,6 +14,36 @@ namespace appFoodMaster_CR.Layer.DAL
     public class DALTarjeta : IDALTarjeta
     {
         private static readonly ILog _log = LogManager.GetLogger("MyControlEventos");
+
+        public List<Tarjeta> GetAll()
+        {
+            try
+            {
+                using (var db = FactoryDatabase.CreateDataBase(FactoryConexion.CreateConnection()))
+                {
+                    var command = new SqlCommand("usp_SELECT_Tarjeta_All");
+                    command.CommandType = CommandType.StoredProcedure;
+                    var ds = db.ExecuteReader(command, "Tarjeta");
+
+                    var lista = new List<Tarjeta>();
+                    foreach (DataRow dr in ds.Tables[0].Rows)
+                    {
+                        lista.Add(new Tarjeta
+                        {
+                            IdTarjeta = Convert.ToInt32(dr["IdTarjeta"]),
+                            Descripcion = dr["Descripcion"].ToString()
+                        });
+                    }
+                    return lista;
+                }
+            }
+            catch (Exception er)
+            {
+                _log.Error("Error GetAll Tarjeta", er);
+                throw;
+            }
+        }
+
         public int Insert(Tarjeta tarjeta)
         {
             try

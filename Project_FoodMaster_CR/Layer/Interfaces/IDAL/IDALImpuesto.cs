@@ -14,5 +14,6 @@ namespace appFoodMaster_CR.Layer.Interfaces.IDAL
         void DELETE(DateTime fecha);
         List<Impuesto> SELECTALL();
         List<Impuesto> Get_By_Filter(string filtro);
+        Impuesto ObtenerVigente(DateTime? fecha);
     }
 }

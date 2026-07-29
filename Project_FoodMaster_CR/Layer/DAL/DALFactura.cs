@@ -110,7 +110,7 @@ namespace appFoodMaster_CR.Layer.DAL
                     var command = new SqlCommand("usp_INSERT_Factura");
                     command.CommandType = CommandType.StoredProcedure;
 
-                    command.Parameters.AddWithValue("@NumeroFactura", factura.NumeroFactura);
+                    // OJO: ya NO se manda @NumeroFactura como input - lo genera el SP
                     command.Parameters.AddWithValue("@IdCliente", factura.IdCliente);
                     command.Parameters.AddWithValue("@IdUsuario", factura.IdUsuario);
                     command.Parameters.Add("@Subtotal", SqlDbType.Decimal).Value = (decimal)factura.Subtotal;
@@ -127,6 +127,13 @@ namespace appFoodMaster_CR.Layer.DAL
                     command.Parameters.AddWithValue("@UltimosDigitosTarjeta", factura.UltimosDigitosTarjeta);
                     command.Parameters.AddWithValue("@NumeroAutorizacion", factura.NumeroAutorizacion);
 
+                    // AHORA @NumeroFactura es OUTPUT, lo genera el SP con el SEQUENCE
+                    var outNumero = new SqlParameter("@NumeroFactura", SqlDbType.VarChar, 20)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    command.Parameters.Add(outNumero);
+
                     var outId = new SqlParameter("@IdFactura", SqlDbType.Int)
                     {
                         Direction = ParameterDirection.Output
@@ -135,6 +142,7 @@ namespace appFoodMaster_CR.Layer.DAL
 
                     db.ExecuteNonQuery(command);
 
+                    factura.NumeroFactura = outNumero.Value.ToString();
                     factura.IdFactura = Convert.ToInt32(outId.Value);
                     return factura.IdFactura;
                 }

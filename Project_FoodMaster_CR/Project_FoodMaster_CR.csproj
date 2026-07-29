@@ -47,12 +47,16 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="QuestPDF, Version=2026.7.1.0, Culture=neutral, PublicKeyToken=0f3c2b2315ff52c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\QuestPDF.2026.7.1\lib\netstandard2.0\QuestPDF.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.6.1\lib\net462\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.IO.Pipelines, Version=10.0.0.10, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IO.Pipelines.10.0.10\lib\net462\System.IO.Pipelines.dll</HintPath>
     </Reference>
@@ -77,6 +81,8 @@
     </Reference>
     <Reference Include="System.ValueTuple" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -251,6 +257,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilitarios\ClienteReportePdfService.cs" />
+    <Compile Include="Utilitarios\EnviarCorreo.cs" />
+    <Compile Include="Utilitarios\FacturaPdfService.cs" />
+    <Compile Include="Utilitarios\FacturaReportePdfService.cs" />
+    <Compile Include="Utilitarios\ProductoVendidoReportePdfService.cs" />
     <Compile Include="Utilitarios\util\Cryptography.cs" />
     <Compile Include="Utilitarios\util\CustomException.cs" />
     <Compile Include="Utilitarios\util\ExceptionsExtention.cs" />
@@ -345,5 +356,7 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\System.ValueTuple.4.6.2\build\net471\System.ValueTuple.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.ValueTuple.4.6.2\build\net471\System.ValueTuple.targets'))" />
+    <Error Condition="!Exists('..\packages\QuestPDF.2026.7.1\build\net4\QuestPDF.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\QuestPDF.2026.7.1\build\net4\QuestPDF.targets'))" />
   </Target>
+  <Import Project="..\packages\QuestPDF.2026.7.1\build\net4\QuestPDF.targets" Condition="Exists('..\packages\QuestPDF.2026.7.1\build\net4\QuestPDF.targets')" />
 </Project>

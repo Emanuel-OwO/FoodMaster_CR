@@ -16,6 +16,10 @@ namespace appFoodMaster_CR.Layer.BLL
         {
             _dalTarjeta = dalTarjeta;
         }
+        public List<Tarjeta> GetAll()
+        {
+            return _dalTarjeta.GetAll();
+        }
         public int Save(Tarjeta tarjeta)
         {
 

@@ -10,5 +10,6 @@ namespace appFoodMaster_CR.Layer.Interfaces.IBLL
     public interface IBLLTarjeta
     {
         int Save(Tarjeta tarjeta);
+        List<Tarjeta> GetAll();
     }
 }

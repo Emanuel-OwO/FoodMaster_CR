@@ -98,7 +98,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "frmReportesFacturas";
-            this.Text = "frmReportesFacturas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "ReportesFacturas";
             this.ResumeLayout(false);
             this.PerformLayout();
 

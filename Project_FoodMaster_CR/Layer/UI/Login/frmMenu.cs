@@ -1,5 +1,6 @@
 ﻿using appFoodMaster_CR.Layer.UI.Mantenimientos;
 using appFoodMaster_CR.Layer.UI.Procesos;
+using appFoodMaster_CR.Layer.UI.Seguridad;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -143,6 +144,73 @@ namespace appFoodMaster_CR.Layer.UI.Login
             frmFactura frmFactura = new frmFactura();
             frmFactura.MdiParent = this;
             frmFactura.Show();
+        }
+
+        private void toolStripMenuCambiarUsuario_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Cerrar todas las ventanas hijas abiertas
+                foreach (Form child in this.MdiChildren)
+                {
+                    child.Close();
+                }
+
+                // Deshabilitar todos los menús principales
+                foreach (ToolStripItem opcionMenu in this.menuStrip1.Items)
+                {
+                    opcionMenu.Enabled = false;
+                }
+
+                // Dejar activos solo los que siempre deben verse
+                List<string> menus = new List<string>();
+                menus.Add("acercaDeToolStripMenuItem");
+                menus.Add("salirToolStripMenuItem");
+                menus.Add("cambiarUsuarioToolStripMenuItem");
+                menus.Add("manualDelUsuarioToolStripMenuItem");
+
+                foreach (ToolStripItem opcionMenu in this.menuStrip1.Items)
+                {
+                    if (menus.Contains(opcionMenu.Name))
+                    {
+                        opcionMenu.Enabled = true;
+                    }
+                }
+
+                // Limpiar sesión actual
+                appFoodMaster_CR.Properties.Settings.Default.Login = string.Empty;
+                appFoodMaster_CR.Properties.Settings.Default.Nombre = string.Empty;
+                appFoodMaster_CR.Properties.Settings.Default.RolId = string.Empty;
+                appFoodMaster_CR.Properties.Settings.Default.Save();
+
+                // Volver a mostrar login
+                using (frmLogin ofrmLogin = new frmLogin())
+                {
+                    ofrmLogin.ShowDialog();
+
+                    if (ofrmLogin.DialogResult == DialogResult.OK)
+                    {
+                        Seguridad();
+                        CargarStatusStrip();
+                    }
+                    else
+                    {
+                        Application.Exit();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Se produjo un error al cambiar de usuario: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ToolStripMenuItemUsuarios_Click(object sender, EventArgs e)
+        {
+            frmUsuario frmUsuario = new frmUsuario();
+            frmUsuario.MdiParent = this;
+            frmUsuario.Show();
         }
     }
 }

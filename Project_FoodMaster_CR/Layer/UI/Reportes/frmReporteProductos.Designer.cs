@@ -120,7 +120,8 @@
             this.Controls.Add(this.txtModelo);
             this.Controls.Add(this.cboMarca);
             this.Name = "frmReporteProductos";
-            this.Text = "frmReporteProductos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "ReporteProductos";
             this.ResumeLayout(false);
             this.PerformLayout();
 

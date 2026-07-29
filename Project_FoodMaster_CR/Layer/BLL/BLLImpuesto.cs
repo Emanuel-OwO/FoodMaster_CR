@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace appFoodMaster_CR.Layer.BLL
 {
@@ -38,6 +39,15 @@ namespace appFoodMaster_CR.Layer.BLL
             _objDALImpuesto.INSERT(impuesto);
         }
 
+        public Impuesto ObtenerVigente(DateTime? fecha)
+        {
+            var impuesto = _objDALImpuesto.ObtenerVigente(fecha);
+            if (impuesto == null)
+                throw new Exception("No hay un porcentaje de impuesto configurado. " +
+                    "Registre uno en el mantenimiento de Impuesto antes de facturar.");
+            return impuesto;
+        }
+
         public List<Impuesto> SELECTALL()
         {
             return _objDALImpuesto.SELECTALL();
@@ -53,4 +63,6 @@ namespace appFoodMaster_CR.Layer.BLL
             _objDALImpuesto.UPDATE(impuesto);
         }
     }
+
+
 }

@@ -1,6 +1,7 @@
 ﻿using appFoodMaster_CR.Layer.BLL;
 using appFoodMaster_CR.Layer.Entities;
 using appFoodMaster_CR.Layer.Interfaces.IBLL;
+using appFoodMaster_CR.Layer.Interfaces.IDAL;
 using appFoodMaster_CR.Layer.UI.Filtros;
 using System;
 using System.Collections.Generic;
@@ -130,6 +131,7 @@ namespace appFoodMaster_CR.Layer.UI.Procesos
                                               + c.SegundoApellido;
                         txtCedula.Text = c.Identificacion;
                         txtCelular.Text = c.Telefono;
+
                     }
                 }
             }
@@ -243,7 +245,175 @@ namespace appFoodMaster_CR.Layer.UI.Procesos
         }
         private void btnFacturar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (_firmaClienteBytes == null || _firmaClienteBytes.Length == 0)
+                    throw new Exception("Debe capturar la firma del cliente antes de facturar.");
 
+                if (_idClienteSeleccionado <= 0)
+                    throw new Exception("Debe seleccionar un cliente.");
+
+                if (listaDetalle.Count == 0)
+                    throw new Exception("Debe agregar al menos un producto.");
+
+                // Verificar stock real en BD
+                foreach (FacturaDetalle item in listaDetalle)
+                {
+                    Producto p = _bllProducto.SelectById(item.IdProducto);
+                    if (p == null)
+                        throw new Exception("No se encontró el producto con Id: " + item.IdProducto);
+                    if (item.Cantidad > p.CantidadStock)
+                        throw new Exception($"Stock insuficiente para '{p.CantidadStock}'. Disponible: {p.CantidadStock}.");
+                }
+
+                // Calcular totales
+                decimal subTotal = _bllFactura.CalcularSubTotal(listaDetalle);
+                decimal impuesto = _bllFactura.CalcularIVA(subTotal);
+                decimal totalColones = _bllFactura.CalcularTotalColones(subTotal, impuesto);
+
+                decimal tipoCambio = 530m;
+                if (decimal.TryParse(txtDolar.Text.Replace(",", ""), out decimal tc) && tc > 0)
+                    tipoCambio = tc;
+
+                decimal totalDolares = _bllFactura.CalcularTotalDolares(totalColones, tipoCambio);
+
+                // Resolver IdTarjeta según el texto ingresado (VISA/MASTERCARD)
+                var tarjetas = new BLLTarjeta(new appFoodMaster_CR.Layer.DAL.DALTarjeta()).GetAll();
+                var tarjetaMatch = tarjetas.FirstOrDefault(t =>
+                    t.Descripcion.Equals(txtTipoTarjerta.Text.Trim(), StringComparison.OrdinalIgnoreCase));
+
+                if (tarjetaMatch == null)
+                    throw new Exception("El tipo de tarjeta indicado no es válido (use VISA o MASTERCARD).");
+
+                // Tomar solo los últimos 4 dígitos de la tarjeta
+                string ultimosDigitos = txtNroTarjeta.Text.Trim();
+                ultimosDigitos = ultimosDigitos.Length >= 4
+                    ? ultimosDigitos.Substring(ultimosDigitos.Length - 4)
+                    : ultimosDigitos.PadLeft(4, '0');
+
+                // Número de autorización simulado (no hay pasarela de pago real)
+                string numeroAutorizacion = "AUT-" + DateTime.Now.ToString("HHmmssfff");
+
+                //MessageBox.Show("ANTES DEL IF: " + _idClienteSeleccionado);
+                // Armar cabecera
+                Factura factura = new Factura
+                {
+                    Fecha = dtpFecha.Value,
+                    IdCliente = _idClienteSeleccionado,
+                    IdUsuario = Convert.ToInt32(Properties.Settings.Default.IdUsuario),
+                    Subtotal = (double)subTotal,
+                    PorcentajeImpuestoAplicado = 13.0,      // ver nota abajo
+                    MontoImpuesto = (double)impuesto,
+                    TipoCambio = (double)tipoCambio,
+                    TotalColones = (double)totalColones,
+                    TotalDolares = (double)totalDolares,
+                    FirmaCliente = _firmaClienteBytes,
+                    IdTarjeta = tarjetaMatch.IdTarjeta,
+                    UltimosDigitosTarjeta = ultimosDigitos,
+                    NumeroAutorizacion = numeroAutorizacion,
+                    Estado = true
+                };
+
+                // Guardar cabecera — el SP genera el número y lo retorna
+                int idFactura = _bllFactura.Save(factura);
+                string numeroFinal = factura.NumeroFactura;
+                factura.IdFactura = idFactura;   // ← necesario para el XML
+
+                // Guardar detalles y rebajar stock
+                foreach (FacturaDetalle item in listaDetalle)
+                {
+                    item.IdFactura = idFactura;
+                    _bllDetalle.Save(item);
+
+                    Producto prod = _bllProducto.SelectById(item.IdProducto);
+                    prod.CantidadStock -= item.Cantidad;
+                    _bllProducto.UPDATE(prod);
+                }
+
+                // Actualizar pantalla
+                txtNumeroFactura.Text = numeroFinal;
+                txtEstado.Text = "Guardada";
+
+                // Generar y guardar XML
+                string xmlGenerado = appFoodMaster_CR.Utilitarios.Util.FacturaXmlHelper.GenerarXml(
+                     factura,
+                     listaDetalle,
+                     txtNombreCliente.Text.Trim(),
+                     txtTipoTarjerta.Text.Trim()
+
+                );
+
+                string carpetaXml = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "FacturasXML");
+                if (!System.IO.Directory.Exists(carpetaXml))
+                    System.IO.Directory.CreateDirectory(carpetaXml);
+
+                string rutaXml = System.IO.Path.Combine(carpetaXml, numeroFinal + ".xml");
+                System.IO.File.WriteAllText(rutaXml, xmlGenerado, System.Text.Encoding.UTF8);
+                _bllFactura.UpdateXMLFactura(idFactura, xmlGenerado);
+
+                // Generar PDF con QR
+                string contenidoQR =
+                    "FoodMaster_CR\n\n" +
+                    "Factura: " + numeroFinal + "\n" +
+                    "Cliente: " + txtNombreCliente.Text + "\n" +
+                    "Cédula: " + txtCedula.Text + "\n" +
+                    "Fecha: " + dtpFecha.Value.ToString("dd/MM/yyyy") + "\n" +
+                    "Total CRC: " + txtTotalColones.Text + "\n" +
+                    "Pago: " + txtTipoTarjerta.Text;
+
+                System.Drawing.Image qrImage = QuickResponse.QuickResponseGenerador(contenidoQR, 10);
+
+                string rutaPdf = appFoodMaster_CR.Layer.Utilitarios.FacturaPdfService.GenerarPdfFactura(
+                    factura,
+                    listaDetalle,
+                    txtNombreCliente.Text.Trim(),
+                    txtCedula.Text.Trim(),
+                    txtUsuario.Text.Trim(),
+                    txtTipoTarjerta.Text.Trim(),
+                    _firmaClienteBytes,
+                    qrImage
+                );
+
+                // Enviar correo
+                if (!string.IsNullOrWhiteSpace(correoClienteSeleccionado))
+                {
+                    try
+                    {
+                        appFoodMaster_CR.Utilitarios.EnviarCorreo correo = new appFoodMaster_CR.Utilitarios.EnviarCorreo();
+
+                        string asunto = "Factura " + numeroFinal + " - FoodMaster_CR";
+                        string body = "<h2>FoodMaster_CR</h2>" +
+                                        "<p>Estimado cliente,</p>" +
+                                        "<p>Adjuntamos su factura en formato PDF y XML.</p>" +
+                                        "<p><b>Número de factura:</b> " + numeroFinal + "</p>" +
+                                        "<p>Gracias por su compra.</p>";
+
+                        correo.enviarCorreoGmail(body, correoClienteSeleccionado, asunto,
+                            new List<string> { rutaPdf, rutaXml });
+                    }
+                    catch (Exception exCorreo)
+                    {
+                        MessageBox.Show(
+                            "La factura se guardó, pero no se pudo enviar el correo:\n" + exCorreo.Message,
+                            "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("La factura se generó, pero el cliente no tiene correo registrado.",
+                        "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+                MessageBox.Show("Factura guardada correctamente. Número: " + numeroFinal,
+                    "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                IniciarNuevaFactura();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al facturar: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 
@@ -316,6 +486,8 @@ namespace appFoodMaster_CR.Layer.UI.Procesos
             _stockProductoSeleccionado = 0;
             // Cabecera
             txtNumeroFactura.Text = "Pendiente";
+            //txtNumeroFactura.Text = GenerarNumeroFactura();
+            txtNumeroFactura.ReadOnly = true;
             txtNumeroFactura.ReadOnly = true;
             dtpFecha.Value = DateTime.Now;
             txtEstado.Text = "Activa";
@@ -347,7 +519,10 @@ namespace appFoodMaster_CR.Layer.UI.Procesos
             picFirma.Image = null;
 
         }
-
+        //private string GenerarNumeroFactura()
+        //{
+        //    return "FAC-" + DateTime.Now.ToString("yyyyMMddHHmmssfff");
+        //}
         private void CargarTipoCambio()
         {
             try

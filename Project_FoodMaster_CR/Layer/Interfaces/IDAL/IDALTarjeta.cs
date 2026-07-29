@@ -10,5 +10,6 @@ namespace appFoodMaster_CR.Layer.Interfaces.IDAL
     public interface IDALTarjeta
     {
         int Insert(Tarjeta tarjeta);
+        List<Tarjeta> GetAll();
     }
 }
