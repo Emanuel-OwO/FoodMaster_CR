@@ -14,5 +14,6 @@ namespace appFoodMaster_CR.Layer.Entities
         public int Cantidad { set; get; }
         public double Precio { set; get; }
         public double Subtotal { set; get; }
+        public string NombreProducto { set; get; }
     }
 }

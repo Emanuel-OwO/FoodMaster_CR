@@ -24,7 +24,7 @@ namespace appFoodMaster_CR.Layer.BLL
             if (usuario.Clave.Length < 6)
                 throw new Exception("La clave debe tener al menos 6 caracteres");
 
-            // ← Encriptar AQUÍ en la BLL, no en el formulario
+ 
             usuario.Clave = Cryptography.EncrypthAES(usuario.Clave);
             _objdALUsuario.INSERT(usuario);
         }
@@ -41,7 +41,7 @@ namespace appFoodMaster_CR.Layer.BLL
             if (string.IsNullOrWhiteSpace(clave))
                 throw new Exception("La contraseña es obligatoria.");
 
-            // Encriptar antes de comparar con BD
+         
             string claveEncriptada = Cryptography.EncrypthAES(clave);
             return _objdALUsuario.LOGIN(nombreUsuario.Trim(), claveEncriptada);
         }
@@ -66,11 +66,11 @@ namespace appFoodMaster_CR.Layer.BLL
             if (string.IsNullOrWhiteSpace(usuario.NombreUsuario))
                 throw new Exception("El nombre de usuario es obligatorio");
 
-            // Si viene clave nueva, encriptarla; si viene vacía, mantener la de BD
+         
             if (!string.IsNullOrWhiteSpace(usuario.Clave))
                 usuario.Clave = Cryptography.EncrypthAES(usuario.Clave);
             else
-                usuario.Clave = _objdALUsuario.SELECT_BY_ID(usuario.IdUsuario).Clave; // mantiene la actual
+                usuario.Clave = _objdALUsuario.SELECT_BY_ID(usuario.IdUsuario).Clave; 
 
             _objdALUsuario.UPDATE(usuario);
         }

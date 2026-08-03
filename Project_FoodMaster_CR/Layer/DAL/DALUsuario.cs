@@ -82,7 +82,7 @@ namespace appFoodMaster_CR.Layer.DAL
                         SegundoApellido = dr["SegundoApellido"] == DBNull.Value
                             ? null : dr["SegundoApellido"].ToString(),
                         IdPerfil = Convert.ToInt32(dr["IdPerfil"]),
-                        Estado = true   // si el SP devolvió fila, ya está activo
+                        Estado = true   
                     };
                 }
             }

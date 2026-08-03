@@ -10,9 +10,8 @@ namespace appFoodMaster_CR.Layer.DTO
     {
         public int IdProducto { get; set; }
         public string CodigoInterno { get; set; }
-        public string Marca { get; set; }
-        public string Modelo { get; set; }
-        public string TipoDispositivo { get; set; }
+        public string Descripcion { get; set; }
+        public string TipoProducto { get; set; }
         public decimal Precio { get; set; }
         public int CantidadVendida { get; set; }
         public byte[] Fotografia { get; set; }

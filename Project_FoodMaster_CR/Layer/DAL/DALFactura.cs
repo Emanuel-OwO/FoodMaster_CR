@@ -110,7 +110,6 @@ namespace appFoodMaster_CR.Layer.DAL
                     var command = new SqlCommand("usp_INSERT_Factura");
                     command.CommandType = CommandType.StoredProcedure;
 
-                    // OJO: ya NO se manda @NumeroFactura como input - lo genera el SP
                     command.Parameters.AddWithValue("@IdCliente", factura.IdCliente);
                     command.Parameters.AddWithValue("@IdUsuario", factura.IdUsuario);
                     command.Parameters.Add("@Subtotal", SqlDbType.Decimal).Value = (decimal)factura.Subtotal;
@@ -127,7 +126,6 @@ namespace appFoodMaster_CR.Layer.DAL
                     command.Parameters.AddWithValue("@UltimosDigitosTarjeta", factura.UltimosDigitosTarjeta);
                     command.Parameters.AddWithValue("@NumeroAutorizacion", factura.NumeroAutorizacion);
 
-                    // AHORA @NumeroFactura es OUTPUT, lo genera el SP con el SEQUENCE
                     var outNumero = new SqlParameter("@NumeroFactura", SqlDbType.VarChar, 20)
                     {
                         Direction = ParameterDirection.Output
@@ -205,7 +203,7 @@ namespace appFoodMaster_CR.Layer.DAL
                     cmd.Parameters.Add("@IdFactura", SqlDbType.Int).Value = idFactura;
                     cmd.Parameters.Add("@NumeroFactura", SqlDbType.VarChar, 50).Value = numeroFactura;
 
-                    // ← ESTO es lo que faltaba: pasar el cmd al db, no llamarlo directo
+
                     db.ExecuteNonQuery(cmd);
                 }
             }
@@ -226,7 +224,7 @@ namespace appFoodMaster_CR.Layer.DAL
                     cmd.Parameters.Add("@IdFactura", SqlDbType.Int).Value = idFactura;
                     cmd.Parameters.Add("@XMLFactura", SqlDbType.Xml).Value = xmlFactura;
 
-                    db.ExecuteNonQuery(cmd); // ← este es el cambio
+                    db.ExecuteNonQuery(cmd); 
                 }
             }
         }

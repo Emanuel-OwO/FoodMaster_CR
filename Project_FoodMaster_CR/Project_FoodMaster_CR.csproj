@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="log4net, Version=3.3.2.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.3.3.2\lib\net462\log4net.dll</HintPath>
@@ -104,6 +107,7 @@
     <Compile Include="Layer\BLL\BLLProducto.cs" />
     <Compile Include="Layer\BLL\BLLProvincia.cs" />
     <Compile Include="Layer\BLL\BLLReporte.cs" />
+    <Compile Include="Layer\BLL\BLLReportes.cs" />
     <Compile Include="Layer\BLL\BLLTarjeta.cs" />
     <Compile Include="Layer\BLL\BLLTipoProducto.cs" />
     <Compile Include="Layer\BLL\BLLUsuario.cs" />
@@ -113,6 +117,7 @@
     <Compile Include="Layer\DAL\DALImpuesto.cs" />
     <Compile Include="Layer\DAL\DALProducto.cs" />
     <Compile Include="Layer\DAL\DALProvincia.cs" />
+    <Compile Include="Layer\DAL\DALReporte.cs" />
     <Compile Include="Layer\DAL\DALTarjeta.cs" />
     <Compile Include="Layer\DAL\DALTipoProducto.cs" />
     <Compile Include="Layer\DAL\DALUsuario.cs" />
@@ -243,11 +248,11 @@
     <Compile Include="Layer\UI\Reportes\frmReportesFacturas.Designer.cs">
       <DependentUpon>frmReportesFacturas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Layer\UI\Seguridad\frmInformacionEmpresa.cs">
+    <Compile Include="Layer\UI\Seguridad\AboutEmpresa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Layer\UI\Seguridad\frmInformacionEmpresa.Designer.cs">
-      <DependentUpon>frmInformacionEmpresa.cs</DependentUpon>
+    <Compile Include="Layer\UI\Seguridad\AboutEmpresa.Designer.cs">
+      <DependentUpon>AboutEmpresa.cs</DependentUpon>
     </Compile>
     <Compile Include="Layer\UI\Seguridad\frmUsuario.cs">
       <SubType>Form</SubType>
@@ -313,6 +318,9 @@
     <EmbeddedResource Include="Layer\UI\Reportes\frmReportesFacturas.resx">
       <DependentUpon>frmReportesFacturas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Layer\UI\Seguridad\AboutEmpresa.resx">
+      <DependentUpon>AboutEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Layer\UI\Seguridad\frmUsuario.resx">
       <DependentUpon>frmUsuario.cs</DependentUpon>
     </EmbeddedResource>
@@ -348,6 +356,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\LogoFoodMasterCr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="favicon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.ValueTuple.4.6.2\build\net471\System.ValueTuple.targets" Condition="Exists('..\packages\System.ValueTuple.4.6.2\build\net471\System.ValueTuple.targets')" />

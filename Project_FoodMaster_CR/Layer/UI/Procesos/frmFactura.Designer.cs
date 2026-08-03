@@ -88,14 +88,14 @@
             // 
             // txtTotalDolares
             // 
-            this.txtTotalDolares.Location = new System.Drawing.Point(638, 738);
+            this.txtTotalDolares.Location = new System.Drawing.Point(704, 738);
             this.txtTotalDolares.Name = "txtTotalDolares";
             this.txtTotalDolares.Size = new System.Drawing.Size(100, 20);
             this.txtTotalDolares.TabIndex = 237;
             // 
             // txtTotalColones
             // 
-            this.txtTotalColones.Location = new System.Drawing.Point(638, 705);
+            this.txtTotalColones.Location = new System.Drawing.Point(704, 705);
             this.txtTotalColones.Name = "txtTotalColones";
             this.txtTotalColones.Size = new System.Drawing.Size(100, 20);
             this.txtTotalColones.TabIndex = 236;
@@ -103,7 +103,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(560, 708);
+            this.label23.Location = new System.Drawing.Point(626, 708);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(72, 13);
             this.label23.TabIndex = 235;
@@ -112,7 +112,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(560, 738);
+            this.label10.Location = new System.Drawing.Point(626, 738);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(70, 13);
             this.label10.TabIndex = 234;
@@ -194,7 +194,7 @@
             this.btnSalir});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(946, 71);
+            this.toolStrip2.Size = new System.Drawing.Size(1010, 71);
             this.toolStrip2.TabIndex = 219;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -256,28 +256,28 @@
             // 
             // txtDolar
             // 
-            this.txtDolar.Location = new System.Drawing.Point(810, 793);
+            this.txtDolar.Location = new System.Drawing.Point(876, 793);
             this.txtDolar.Name = "txtDolar";
             this.txtDolar.Size = new System.Drawing.Size(100, 20);
             this.txtDolar.TabIndex = 216;
             // 
             // txtTotal
             // 
-            this.txtTotal.Location = new System.Drawing.Point(810, 764);
+            this.txtTotal.Location = new System.Drawing.Point(876, 764);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(100, 20);
             this.txtTotal.TabIndex = 215;
             // 
             // txtImpreso
             // 
-            this.txtImpreso.Location = new System.Drawing.Point(810, 735);
+            this.txtImpreso.Location = new System.Drawing.Point(876, 735);
             this.txtImpreso.Name = "txtImpreso";
             this.txtImpreso.Size = new System.Drawing.Size(100, 20);
             this.txtImpreso.TabIndex = 214;
             // 
             // txtSubTotal
             // 
-            this.txtSubTotal.Location = new System.Drawing.Point(810, 701);
+            this.txtSubTotal.Location = new System.Drawing.Point(876, 701);
             this.txtSubTotal.Name = "txtSubTotal";
             this.txtSubTotal.Size = new System.Drawing.Size(100, 20);
             this.txtSubTotal.TabIndex = 213;
@@ -285,7 +285,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(748, 793);
+            this.label15.Location = new System.Drawing.Point(814, 793);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(32, 13);
             this.label15.TabIndex = 212;
@@ -294,7 +294,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(748, 764);
+            this.label14.Location = new System.Drawing.Point(814, 764);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(31, 13);
             this.label14.TabIndex = 211;
@@ -303,7 +303,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(748, 737);
+            this.label13.Location = new System.Drawing.Point(814, 737);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(50, 13);
             this.label13.TabIndex = 210;
@@ -312,7 +312,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(747, 708);
+            this.label12.Location = new System.Drawing.Point(813, 708);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(50, 13);
             this.label12.TabIndex = 209;
@@ -452,7 +452,7 @@
             this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDatos.Location = new System.Drawing.Point(457, 74);
             this.dgvDatos.Name = "dgvDatos";
-            this.dgvDatos.Size = new System.Drawing.Size(453, 598);
+            this.dgvDatos.Size = new System.Drawing.Size(519, 598);
             this.dgvDatos.TabIndex = 190;
             // 
             // btnCalcularFactura
@@ -489,7 +489,7 @@
             // 
             this.statusStrip1.Location = new System.Drawing.Point(0, 849);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(946, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1010, 22);
             this.statusStrip1.TabIndex = 186;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -508,7 +508,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(946, 871);
+            this.ClientSize = new System.Drawing.Size(1010, 871);
             this.Controls.Add(this.txtTotalDolares);
             this.Controls.Add(this.txtTotalColones);
             this.Controls.Add(this.label23);
@@ -554,6 +554,7 @@
             this.Controls.Add(this.btnFiltroProducto);
             this.Controls.Add(this.btnFirmar);
             this.Controls.Add(this.statusStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmFactura";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Factura";

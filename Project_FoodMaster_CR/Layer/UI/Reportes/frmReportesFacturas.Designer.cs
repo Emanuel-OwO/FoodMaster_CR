@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReportesFacturas));
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnReporte = new System.Windows.Forms.Button();
             this.dtpFechaFinal = new System.Windows.Forms.DateTimePicker();
@@ -44,6 +45,7 @@
             this.btnSalir.TabIndex = 11;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // btnReporte
             // 
@@ -53,6 +55,7 @@
             this.btnReporte.TabIndex = 10;
             this.btnReporte.Text = "Reporte";
             this.btnReporte.UseVisualStyleBackColor = true;
+            this.btnReporte.Click += new System.EventHandler(this.btnReporte_Click);
             // 
             // dtpFechaFinal
             // 
@@ -97,9 +100,11 @@
             this.Controls.Add(this.dtpFechaInicial);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmReportesFacturas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ReportesFacturas";
+            this.Load += new System.EventHandler(this.frmReportesFacturas_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

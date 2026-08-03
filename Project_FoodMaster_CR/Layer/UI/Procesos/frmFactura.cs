@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -197,7 +198,9 @@ namespace appFoodMaster_CR.Layer.UI.Procesos
                     throw new Exception("Debe indicar la cantidad.");
 
                 int cantidad = Convert.ToInt32(txtCantidad.Text);
-                double precio = Convert.ToDouble(txtPrecio.Text.Replace(",", ""));
+
+                if (!double.TryParse(txtPrecio.Text, NumberStyles.Number, CultureInfo.CurrentCulture, out double precio))
+                    throw new Exception("El precio no tiene un formato válido.");
 
                 if (cantidad <= 0)
                     throw new Exception("La cantidad debe ser mayor a cero.");
@@ -221,7 +224,8 @@ namespace appFoodMaster_CR.Layer.UI.Procesos
                         IdProducto = _idProductoSeleccionado,
                         Cantidad = 1,
                         Precio = precio,
-                        Subtotal = precio
+                        Subtotal = precio,
+                  
                     };
                     listaDetalle.Add(detalle);
 
@@ -272,7 +276,7 @@ namespace appFoodMaster_CR.Layer.UI.Procesos
                 decimal totalColones = _bllFactura.CalcularTotalColones(subTotal, impuesto);
 
                 decimal tipoCambio = 530m;
-                if (decimal.TryParse(txtDolar.Text.Replace(",", ""), out decimal tc) && tc > 0)
+                if (decimal.TryParse(txtDolar.Text, NumberStyles.Number, CultureInfo.CurrentCulture, out decimal tc) && tc > 0)
                     tipoCambio = tc;
 
                 decimal totalDolares = _bllFactura.CalcularTotalDolares(totalColones, tipoCambio);
@@ -325,14 +329,18 @@ namespace appFoodMaster_CR.Layer.UI.Procesos
                     item.IdFactura = idFactura;
                     _bllDetalle.Save(item);
 
-                    Producto prod = _bllProducto.SelectById(item.IdProducto);
-                    prod.CantidadStock -= item.Cantidad;
-                    _bllProducto.UPDATE(prod);
                 }
 
                 // Actualizar pantalla
                 txtNumeroFactura.Text = numeroFinal;
                 txtEstado.Text = "Guardada";
+
+
+                foreach (var item in listaDetalle)
+                {
+                    Producto p = _bllProducto.SelectById(item.IdProducto);
+                    item.NombreProducto = p.Descripcion;
+                }
 
                 // Generar y guardar XML
                 string xmlGenerado = appFoodMaster_CR.Utilitarios.Util.FacturaXmlHelper.GenerarXml(

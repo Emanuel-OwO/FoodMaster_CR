@@ -1,4 +1,5 @@
-﻿using appFoodMaster_CR.Layer.Entities;
+﻿using appFoodMaster_CR.Layer.DTO;
+using appFoodMaster_CR.Layer.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,9 @@ namespace appFoodMaster_CR.Layer.Interfaces.IBLL
 {
     public interface IBLLReporte
     {
-        //List<FacturaReporteDTO> GetFacturasPorFecha(DateTime fechaInicial, DateTime fechaFinal);
-        //List<Cliente> GetClientesReporte();
-        //List<ProductoVendidoReporteDTO> GetProductosVendidos(int? idMarca, string modelo, int? idTipoDispositivo);
-        //List<VentasPorFechaDTO> GetVentasPorFecha(DateTime fechaInicial, DateTime fechaFinal);
+        List<FacturaReporteDTO> GetFacturasPorFecha(DateTime fechaInicial, DateTime fechaFinal);
+        List<Cliente> GetClientesReporte();
+        List<ProductoVendidoReporteDTO> GetProductosVendidos(int? IdProducto, string Descripcion, int? IdTipoProducto);
+        List<VentasPorFechaDTO> GetVentasPorFecha(DateTime fechaInicial, DateTime fechaFinal);
     }
 }

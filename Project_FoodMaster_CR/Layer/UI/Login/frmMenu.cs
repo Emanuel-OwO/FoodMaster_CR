@@ -1,5 +1,6 @@
 ﻿using appFoodMaster_CR.Layer.UI.Mantenimientos;
 using appFoodMaster_CR.Layer.UI.Procesos;
+using appFoodMaster_CR.Layer.UI.Reportes;
 using appFoodMaster_CR.Layer.UI.Seguridad;
 using System;
 using System.Collections.Generic;
@@ -211,6 +212,55 @@ namespace appFoodMaster_CR.Layer.UI.Login
             frmUsuario frmUsuario = new frmUsuario();
             frmUsuario.MdiParent = this;
             frmUsuario.Show();
+        }
+
+        private void toolStripMenuReporteFactura_Click(object sender, EventArgs e)
+        {
+            frmReportesFacturas frmReportesFacturas = new frmReportesFacturas();
+            frmReportesFacturas.MdiParent = this;
+            frmReportesFacturas.Show();
+        }
+
+        private void toolStripMenuReporteCliente_Click(object sender, EventArgs e)
+        {
+            frmReporteClientes frmReporteClientes = new frmReporteClientes();
+            frmReporteClientes.MdiParent = this;
+            frmReporteClientes.Show();
+        }
+
+        private void toolStripMenuReporteProductos_Click(object sender, EventArgs e)
+        {
+            frmReporteProductos frmReporteProductos = new frmReporteProductos();
+            frmReporteProductos.MdiParent = this;
+            frmReporteProductos.Show();
+        }
+
+        private void graficoToolStripMenuItoolStripMenuGrafico_Click(object sender, EventArgs e)
+        {
+            frmReporteGrafico frmReporteGrafico = new frmReporteGrafico();
+            frmReporteGrafico.MdiParent = this;
+            frmReporteGrafico.Show();
+        }
+
+        private void toolStripMenuItemSalir_Click(object sender, EventArgs e)
+        {
+            DialogResult respuesta = MessageBox.Show(
+        "¿Realmente desea salir?",
+        "Confirmación",
+        MessageBoxButtons.YesNo,
+        MessageBoxIcon.Question);
+
+            if (respuesta == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        private void toolStripMenuItemAcercaEmpresa_Click(object sender, EventArgs e)
+        {
+             AboutEmpresa aboutEmpresa = new AboutEmpresa();
+            aboutEmpresa.MdiParent = this;
+            aboutEmpresa.Show();
         }
     }
 }

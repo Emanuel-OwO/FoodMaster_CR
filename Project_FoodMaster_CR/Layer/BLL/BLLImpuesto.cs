@@ -31,7 +31,7 @@ namespace appFoodMaster_CR.Layer.BLL
             if (impuesto.Porcentaje > 100)
                 throw new Exception("El porcentaje no puede ser mayor a 100");
 
-            // No permitir dos registros con la misma fecha (Fecha es la PK)
+            // No permitir dos registros con la misma fecha
             var existentes = _objDALImpuesto.SELECTALL();
             if (existentes != null && existentes.Any(i => i.Fecha.Date == impuesto.Fecha.Date))
                 throw new Exception("Ya existe un porcentaje de impuesto registrado para esa fecha");

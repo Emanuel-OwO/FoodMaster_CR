@@ -75,7 +75,7 @@ namespace appFoodMaster_CR.Layer.UI.Seguridad
                 u.Nombre = txtNombre.Text.Trim();
                 u.PrimerApellido = txtPrimerApellido.Text.Trim();
                 u.SegundoApellido = txtSegundoApellido.Text.Trim();
-                u.Clave = txtClave.Text;   // ← encriptada
+                u.Clave = txtClave.Text;   
                 u.IdPerfil = Convert.ToInt32(cmbPerfiles.SelectedValue);
                 u.Estado = rdoActivo.Checked;
 

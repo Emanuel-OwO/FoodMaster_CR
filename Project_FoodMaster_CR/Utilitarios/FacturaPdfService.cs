@@ -51,7 +51,7 @@ namespace appFoodMaster_CR.Layer.Utilitarios
                         {
                             row.RelativeItem().Column(c =>
                             {
-                                c.Item().Text("CatTech")
+                                c.Item().Text("FoodMaster_CR")
                                     .FontSize(26)
                                     .Bold()
                                     .FontColor("#D63384");
@@ -113,15 +113,18 @@ namespace appFoodMaster_CR.Layer.Utilitarios
                         {
                             table.ColumnsDefinition(columns =>
                             {
+                                columns.RelativeColumn(1);
                                 columns.RelativeColumn(2);
                                 columns.RelativeColumn(1);
                                 columns.RelativeColumn(1);
                                 columns.RelativeColumn(1);
+                           
                             });
 
                             table.Header(header =>
                             {
                                 header.Cell().Background("#F8BBD0").BorderBottom(1).BorderColor("#E91E63").Padding(7).Text("Producto").Bold().FontColor("#5A2A42");
+                                header.Cell().Background("#F8BBD0").BorderBottom(1).BorderColor("#E91E63").Padding(7).Text("Descripcion").Bold().FontColor("#5A2A42");
                                 header.Cell().Background("#F8BBD0").BorderBottom(1).BorderColor("#E91E63").Padding(7).AlignCenter().Text("Cantidad").Bold().FontColor("#5A2A42");
                                 header.Cell().Background("#F8BBD0").BorderBottom(1).BorderColor("#E91E63").Padding(7).AlignRight().Text("Precio").Bold().FontColor("#5A2A42");
                                 header.Cell().Background("#F8BBD0").BorderBottom(1).BorderColor("#E91E63").Padding(7).AlignRight().Text("Subtotal").Bold().FontColor("#5A2A42");
@@ -129,10 +132,11 @@ namespace appFoodMaster_CR.Layer.Utilitarios
 
                             foreach (var item in detalles)
                             {
-                                table.Cell().BorderBottom(1).BorderColor("#F3D6E1").Padding(7).Text(item.IdProducto); ;
+                                table.Cell().BorderBottom(1).BorderColor("#F3D6E1").Padding(7).Text(item.IdProducto);
+                                table.Cell().BorderBottom(1).BorderColor("#F3D6E1").Padding(7).Text(item.NombreProducto);
                                 table.Cell().BorderBottom(1).BorderColor("#F3D6E1").Padding(7).AlignCenter().Text(item.Cantidad.ToString());
-                                table.Cell().BorderBottom(1).BorderColor("#F3D6E1").Padding(7).AlignRight().Text(item.Precio.ToString("N2", CultureInfo.InvariantCulture));
-                                table.Cell().BorderBottom(1).BorderColor("#F3D6E1").Padding(7).AlignRight().Text(item.Subtotal.ToString("N2", CultureInfo.InvariantCulture));
+                                table.Cell().BorderBottom(1).BorderColor("#F3D6E1").Padding(7).AlignRight().Text(item.Precio.ToString("N2"));
+                                table.Cell().BorderBottom(1).BorderColor("#F3D6E1").Padding(7).AlignRight().Text(item.Subtotal.ToString("N2"));
                             }
                         });
 
@@ -144,10 +148,10 @@ namespace appFoodMaster_CR.Layer.Utilitarios
                                 columns.RelativeColumn();
                             });
 
-                            AgregarFilaTotal(table, "SubTotal:", factura.Subtotal.ToString("N2", CultureInfo.InvariantCulture), false);
-                            AgregarFilaTotal(table, "Impuesto:", factura.MontoImpuesto.ToString("N2", CultureInfo.InvariantCulture), false);
-                            AgregarFilaTotal(table, "Total Colones:", factura.TotalColones.ToString("N2", CultureInfo.InvariantCulture), true);
-                            AgregarFilaTotal(table, "Total Dólares:", factura.TotalDolares.ToString("N2", CultureInfo.InvariantCulture), true);
+                            AgregarFilaTotal(table, "SubTotal:", factura.Subtotal.ToString("N2"), false);
+                            AgregarFilaTotal(table, "Impuesto:", factura.MontoImpuesto.ToString("N2"), false);
+                            AgregarFilaTotal(table, "Total Colones:", factura.TotalColones.ToString("N2"), true);
+                            AgregarFilaTotal(table, "Total Dólares:", factura.TotalDolares.ToString("N2"), true);
                         });
 
                         col.Item().PaddingTop(8).Background("#FFF1F5").Border(1).BorderColor("#F8BBD0").Padding(12).Column(c =>
@@ -175,7 +179,7 @@ namespace appFoodMaster_CR.Layer.Utilitarios
                     page.Footer().PaddingTop(8).Column(col =>
                     {
                         col.Item().LineHorizontal(1).LineColor("#F8BBD0");
-                        col.Item().PaddingTop(5).AlignCenter().Text("Gracias por su compra en CatTech")
+                        col.Item().PaddingTop(5).AlignCenter().Text("Gracias por su compra en FoodMaster_CR")
                             .FontSize(9)
                             .FontColor("#A64D79");
                     });

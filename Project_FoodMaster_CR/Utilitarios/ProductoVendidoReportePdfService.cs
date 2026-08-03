@@ -16,7 +16,7 @@ namespace appFoodMaster_CR.Utilitarios
 {
     public class ProductoVendidoReportePdfService
     {
-        public void GenerarPdf(List<ProductoVendidoReporteDTO> lista, string marca, string modelo, string tipo)
+        public void GenerarPdf(List<ProductoVendidoReporteDTO> lista, string producto, string descripcion, string tipoProducto)
         {
             try
             {
@@ -40,7 +40,7 @@ namespace appFoodMaster_CR.Utilitarios
                         {
                             col.Item().Background("#FCE4EC").Padding(16).Column(c =>
                             {
-                                c.Item().Text("SweetTech")
+                                c.Item().Text("FoodMaster_CR")
                                     .FontSize(24)
                                     .Bold()
                                     .FontColor("#D63384");
@@ -50,9 +50,9 @@ namespace appFoodMaster_CR.Utilitarios
                                     .SemiBold()
                                     .FontColor("#7A4E64");
 
-                                c.Item().PaddingTop(6).Text("Marca: " + (string.IsNullOrWhiteSpace(marca) ? "Todas" : marca));
-                                c.Item().Text("Modelo: " + (string.IsNullOrWhiteSpace(modelo) ? "Todos" : modelo));
-                                c.Item().Text("Tipo de dispositivo: " + (string.IsNullOrWhiteSpace(tipo) ? "Todos" : tipo));
+                                c.Item().PaddingTop(6).Text("Producto: " + (string.IsNullOrWhiteSpace(producto) ? "Todos" : producto));
+                                c.Item().Text("Descripción: " + (string.IsNullOrWhiteSpace(descripcion) ? "Todas" : descripcion));
+                                c.Item().Text("Tipo de producto: " + (string.IsNullOrWhiteSpace(tipoProducto) ? "Todos" : tipoProducto));
                                 c.Item().Text("Generado: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm"));
                             });
                         });
@@ -72,14 +72,13 @@ namespace appFoodMaster_CR.Utilitarios
                                     {
                                         c.Spacing(4);
 
-                                        c.Item().Text(item.Modelo)
+                                        c.Item().Text(item.Descripcion)
                                             .Bold()
                                             .FontSize(13)
                                             .FontColor("#C2185B");
 
                                         c.Item().Text("Código interno: " + item.CodigoInterno);
-                                        c.Item().Text("Marca: " + item.Marca);
-                                        c.Item().Text("Tipo de dispositivo: " + item.TipoDispositivo);
+                                        c.Item().Text("Tipo de producto: " + item.TipoProducto);
                                         c.Item().Text("Precio: " + item.Precio.ToString("N2", CultureInfo.InvariantCulture));
                                         c.Item().Text("Cantidad vendida: " + item.CantidadVendida);
 
@@ -116,7 +115,7 @@ namespace appFoodMaster_CR.Utilitarios
                         page.Footer().PaddingTop(8).Column(col =>
                         {
                             col.Item().LineHorizontal(1).LineColor("#F8BBD0");
-                            col.Item().PaddingTop(5).AlignCenter().Text("Reporte generado por SweetTech")
+                            col.Item().PaddingTop(5).AlignCenter().Text("Reporte generado por FoodMaster_CR")
                                 .FontSize(9)
                                 .FontColor("#A64D79");
                         });

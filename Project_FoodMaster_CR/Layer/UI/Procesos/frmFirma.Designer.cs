@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFirma));
             this.btnLimpieza = new System.Windows.Forms.Button();
             this.pnlFirma = new System.Windows.Forms.PictureBox();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -87,6 +88,7 @@
             this.Controls.Add(this.pnlFirma);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmFirma";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Firma";

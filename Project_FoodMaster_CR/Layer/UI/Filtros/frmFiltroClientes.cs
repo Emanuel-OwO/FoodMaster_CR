@@ -96,7 +96,7 @@ namespace appFoodMaster_CR.Layer.UI.Filtros
         {
             if (dgvDatos.CurrentRow != null)
             {
-                // Usar DataBoundItem igual que el clic simple
+                
                 cliente = dgvDatos.CurrentRow.DataBoundItem as Cliente;
 
                 if (cliente != null)

@@ -211,6 +211,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvDatos);
             this.Controls.Add(this.statusStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMantenimientoTipoProducto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MantenimientoTipoProducto";

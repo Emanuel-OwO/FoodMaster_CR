@@ -298,6 +298,7 @@
             this.Controls.Add(this.dgvDatos);
             this.Controls.Add(this.txtSegundoApellido);
             this.Controls.Add(this.toolStrip2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmUsuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Usuario";

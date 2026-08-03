@@ -231,10 +231,10 @@ namespace appFoodMaster_CR.Layer.UI.Mantenimientos
                     pctFoto.Tag = null;
                 }
 
-                // Mostrar Documento (icono Word si tiene archivo)
+                // Mostrar Documento 
                 if (p.DocumentoEspecificaciones != null && p.DocumentoEspecificaciones.Length > 0)
                 {
-                    //   pctDocumento.Image = Project_CatTech.Properties.Resources.MSWordAcepted;
+                   
                     pctDocumento.Tag = p.DocumentoEspecificaciones;
                 }
                 else
@@ -255,7 +255,7 @@ namespace appFoodMaster_CR.Layer.UI.Mantenimientos
             cmbTipoProducto.DataSource = null;
             cmbTipoProducto.DisplayMember = "Descripcion";
             cmbTipoProducto.ValueMember = "IdTipoProducto";
-            cmbTipoProducto.DataSource = _objBLLTipoProducto.SELECTALL();//.Select(p => new { p.IdTipoProducto, p.Descripcion }).Distinct().ToList();
+            cmbTipoProducto.DataSource = _objBLLTipoProducto.SELECTALL();
 
             cmbTipoProducto.SelectedIndex = -1;
         }

@@ -36,7 +36,7 @@ public class ClienteReportePdfService
                     {
                         col.Item().Background("#FCE4EC").Padding(16).Column(c =>
                         {
-                            c.Item().Text("SweetTech")
+                            c.Item().Text("FoodMaster_CR")
                                 .FontSize(24)
                                 .Bold()
                                 .FontColor("#D63384");
@@ -123,7 +123,7 @@ public class ClienteReportePdfService
                     page.Footer().PaddingTop(8).Column(col =>
                     {
                         col.Item().LineHorizontal(1).LineColor("#F8BBD0");
-                        col.Item().PaddingTop(5).AlignCenter().Text("Reporte generado por SweetTech")
+                        col.Item().PaddingTop(5).AlignCenter().Text("Reporte generado por FoodMaster_CR")
                             .FontSize(9)
                             .FontColor("#A64D79");
                     });

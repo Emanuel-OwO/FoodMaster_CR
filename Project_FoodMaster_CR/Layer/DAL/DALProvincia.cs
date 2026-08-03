@@ -71,7 +71,7 @@ namespace appFoodMaster_CR.Layer.DAL
                     reader = db.ExecuteReader(command);
                     while (reader.Read())
                     {
-                        // Mapping 
+                       
                         Provincia oProvincia = new Provincia();
                         oProvincia.IdProvincia = int.Parse(reader["IdProvincia"].ToString());
                         oProvincia.Descripcion = reader["Descripcion"].ToString();
@@ -110,7 +110,7 @@ namespace appFoodMaster_CR.Layer.DAL
                     reader = db.ExecuteReader(command);
                     while (reader.Read())
                     {
-                        // Mapping 
+                        
                         oProvincia = new Provincia();
                         oProvincia.IdProvincia = int.Parse(reader["IdProvincia"].ToString());
                         oProvincia.Descripcion = reader["Descripcion"].ToString();

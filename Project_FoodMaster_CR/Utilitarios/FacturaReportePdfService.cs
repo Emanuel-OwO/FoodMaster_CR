@@ -34,7 +34,7 @@ namespace appFoodMaster_CR.Utilitarios
                     {
                         col.Item().Background("#FCE4EC").Padding(18).Column(c =>
                         {
-                            c.Item().Text("CatTech")
+                            c.Item().Text("FoodMaster_CR")
                                 .FontSize(24)
                                 .Bold()
                                 .FontColor("#D63384");
@@ -105,7 +105,7 @@ namespace appFoodMaster_CR.Utilitarios
                     page.Footer().PaddingTop(8).Column(col =>
                     {
                         col.Item().LineHorizontal(1).LineColor("#F8BBD0");
-                        col.Item().PaddingTop(5).AlignCenter().Text("Reporte generado por SweetTech")
+                        col.Item().PaddingTop(5).AlignCenter().Text("Reporte generado por FoodMaster_CR")
                             .FontSize(9)
                             .FontColor("#A64D79");
                     });
