@@ -38,6 +38,8 @@ namespace appFoodMaster_CR.Layer.UI.Reportes
             cboTipoProducto.SelectedIndex = -1;
 
             ActualizarEstadoFiltroProductos();
+
+            rdbPorProducto.Checked = true;
         }
 
         private void btnReporte_Click(object sender, EventArgs e)

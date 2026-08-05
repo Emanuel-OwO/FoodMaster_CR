@@ -28,21 +28,21 @@ namespace appFoodMaster_CR.Utilitarios
                     page.Size(PageSizes.A4);
                     page.Margin(28);
                     page.PageColor("#FFFDFE");
-                    page.DefaultTextStyle(x => x.FontSize(10).FontColor("#3F3A3D"));
+                    page.DefaultTextStyle(x => x.FontSize(10).FontColor("#1B3A1E"));
 
                     page.Header().Column(col =>
                     {
-                        col.Item().Background("#FCE4EC").Padding(18).Column(c =>
+                        col.Item().Background("#E8F5E9").Padding(18).Column(c =>
                         {
                             c.Item().Text("FoodMaster_CR")
                                 .FontSize(24)
                                 .Bold()
-                                .FontColor("#D63384");
+                                .FontColor("#1B5E20");
 
                             c.Item().Text("Reporte de Facturas")
                                 .FontSize(15)
                                 .SemiBold()
-                                .FontColor("#7A4E64");
+                                .FontColor("#4C7A52");
 
                             c.Item().PaddingTop(8).Text("Fecha inicial: " + fechaInicial.ToString("dd/MM/yyyy"));
                             c.Item().Text("Fecha final: " + fechaFinal.ToString("dd/MM/yyyy"));
@@ -57,7 +57,7 @@ namespace appFoodMaster_CR.Utilitarios
                         col.Item().Text("Facturas encontradas")
                             .Bold()
                             .FontSize(13)
-                            .FontColor("#C2185B");
+                            .FontColor("#1B5E20");
 
                         col.Item().Table(table =>
                         {
@@ -71,22 +71,22 @@ namespace appFoodMaster_CR.Utilitarios
 
                             table.Header(header =>
                             {
-                                header.Cell().Background("#F8BBD0").BorderBottom(1).BorderColor("#E91E63").Padding(7).Text("Factura").Bold().FontColor("#5A2A42");
-                                header.Cell().Background("#F8BBD0").BorderBottom(1).BorderColor("#E91E63").Padding(7).Text("Fecha").Bold().FontColor("#5A2A42");
-                                header.Cell().Background("#F8BBD0").BorderBottom(1).BorderColor("#E91E63").Padding(7).Text("Cliente").Bold().FontColor("#5A2A42");
-                                header.Cell().Background("#F8BBD0").BorderBottom(1).BorderColor("#E91E63").Padding(7).AlignRight().Text("Total").Bold().FontColor("#5A2A42");
+                                header.Cell().Background("#A5D6A7").BorderBottom(1).BorderColor("#2E7D32").Padding(7).Text("Factura").Bold().FontColor("#1B3A1E");
+                                header.Cell().Background("#A5D6A7").BorderBottom(1).BorderColor("#2E7D32").Padding(7).Text("Fecha").Bold().FontColor("#1B3A1E");
+                                header.Cell().Background("#A5D6A7").BorderBottom(1).BorderColor("#2E7D32").Padding(7).Text("Cliente").Bold().FontColor("#1B3A1E");
+                                header.Cell().Background("#A5D6A7").BorderBottom(1).BorderColor("#2E7D32").Padding(7).AlignRight().Text("Total").Bold().FontColor("#1B3A1E");
                             });
 
                             foreach (var item in lista)
                             {
-                                table.Cell().BorderBottom(1).BorderColor("#F3D6E1").Padding(7).Text(item.NumeroFactura);
-                                table.Cell().BorderBottom(1).BorderColor("#F3D6E1").Padding(7).Text(item.Fecha.ToString("dd/MM/yyyy"));
-                                table.Cell().BorderBottom(1).BorderColor("#F3D6E1").Padding(7).Text(item.Cliente);
-                                table.Cell().BorderBottom(1).BorderColor("#F3D6E1").Padding(7).AlignRight().Text(item.TotalColones.ToString("N2", CultureInfo.InvariantCulture));
+                                table.Cell().BorderBottom(1).BorderColor("#D7ECD7").Padding(7).Text(item.NumeroFactura);
+                                table.Cell().BorderBottom(1).BorderColor("#D7ECD7").Padding(7).Text(item.Fecha.ToString("dd/MM/yyyy"));
+                                table.Cell().BorderBottom(1).BorderColor("#D7ECD7").Padding(7).Text(item.Cliente);
+                                table.Cell().BorderBottom(1).BorderColor("#D7ECD7").Padding(7).AlignRight().Text(item.TotalColones.ToString("N2", CultureInfo.InvariantCulture));
                             }
                         });
 
-                        col.Item().AlignRight().Width(250).Background("#FFF1F5").Border(1).BorderColor("#F8BBD0").Padding(10).Table(table =>
+                        col.Item().AlignRight().Width(250).Background("#F1F8F1").Border(1).BorderColor("#A5D6A7").Padding(10).Table(table =>
                         {
                             table.ColumnsDefinition(columns =>
                             {
@@ -94,20 +94,20 @@ namespace appFoodMaster_CR.Utilitarios
                                 columns.RelativeColumn();
                             });
 
-                            table.Cell().Padding(4).Text("Cantidad de facturas:").Bold().FontColor("#C2185B");
-                            table.Cell().Padding(4).AlignRight().Text(lista.Count.ToString()).Bold().FontColor("#C2185B");
+                            table.Cell().Padding(4).Text("Cantidad de facturas:").Bold().FontColor("#1B5E20");
+                            table.Cell().Padding(4).AlignRight().Text(lista.Count.ToString()).Bold().FontColor("#1B5E20");
 
-                            table.Cell().Padding(4).Text("Total facturado:").Bold().FontColor("#C2185B");
-                            table.Cell().Padding(4).AlignRight().Text(total.ToString("N2", CultureInfo.InvariantCulture)).Bold().FontColor("#C2185B");
+                            table.Cell().Padding(4).Text("Total facturado:").Bold().FontColor("#1B5E20");
+                            table.Cell().Padding(4).AlignRight().Text(total.ToString("N2", CultureInfo.InvariantCulture)).Bold().FontColor("#1B5E20");
                         });
                     });
 
                     page.Footer().PaddingTop(8).Column(col =>
                     {
-                        col.Item().LineHorizontal(1).LineColor("#F8BBD0");
+                        col.Item().LineHorizontal(1).LineColor("#A5D6A7");
                         col.Item().PaddingTop(5).AlignCenter().Text("Reporte generado por FoodMaster_CR")
                             .FontSize(9)
-                            .FontColor("#A64D79");
+                            .FontColor("#4C7A52");
                     });
                 });
             }).GeneratePdf();

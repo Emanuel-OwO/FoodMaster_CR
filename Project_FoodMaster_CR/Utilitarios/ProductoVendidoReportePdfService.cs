@@ -34,21 +34,21 @@ namespace appFoodMaster_CR.Utilitarios
                         page.Size(PageSizes.A4);
                         page.Margin(25);
                         page.PageColor("#FFFDFE");
-                        page.DefaultTextStyle(x => x.FontSize(10).FontColor("#3F3A3D"));
+                        page.DefaultTextStyle(x => x.FontSize(10).FontColor("#1B3A1E"));
 
                         page.Header().Column(col =>
                         {
-                            col.Item().Background("#FCE4EC").Padding(16).Column(c =>
+                            col.Item().Background("#E8F5E9").Padding(16).Column(c =>
                             {
                                 c.Item().Text("FoodMaster_CR")
                                     .FontSize(24)
                                     .Bold()
-                                    .FontColor("#D63384");
+                                    .FontColor("#1B5E20");
 
                                 c.Item().Text("Reporte de Productos Vendidos")
                                     .FontSize(15)
                                     .SemiBold()
-                                    .FontColor("#7A4E64");
+                                    .FontColor("#4C7A52");
 
                                 c.Item().PaddingTop(6).Text("Producto: " + (string.IsNullOrWhiteSpace(producto) ? "Todos" : producto));
                                 c.Item().Text("Descripción: " + (string.IsNullOrWhiteSpace(descripcion) ? "Todas" : descripcion));
@@ -64,9 +64,9 @@ namespace appFoodMaster_CR.Utilitarios
                             foreach (var item in lista)
                             {
                                 col.Item()
-                                    .Background("#FFF1F5")
+                                    .Background("#F1F8F1")
                                     .Border(1)
-                                    .BorderColor("#F8BBD0")
+                                    .BorderColor("#A5D6A7")
                                     .Padding(12)
                                     .Column(c =>
                                     {
@@ -75,7 +75,7 @@ namespace appFoodMaster_CR.Utilitarios
                                         c.Item().Text(item.Descripcion)
                                             .Bold()
                                             .FontSize(13)
-                                            .FontColor("#C2185B");
+                                            .FontColor("#1B5E20");
 
                                         c.Item().Text("Código interno: " + item.CodigoInterno);
                                         c.Item().Text("Tipo de producto: " + item.TipoProducto);
@@ -86,11 +86,11 @@ namespace appFoodMaster_CR.Utilitarios
                                         {
                                             row.RelativeItem().AlignMiddle().Text("Fotografía")
                                                 .SemiBold()
-                                                .FontColor("#A64D79");
+                                                .FontColor("#4C7A52");
 
                                             row.ConstantItem(100).Height(90)
                                                 .Border(1)
-                                                .BorderColor("#F8BBD0")
+                                                .BorderColor("#A5D6A7")
                                                 .Background(Colors.White)
                                                 .AlignMiddle()
                                                 .AlignCenter()
@@ -104,7 +104,7 @@ namespace appFoodMaster_CR.Utilitarios
                                                     {
                                                         cont.Text("Sin foto")
                                                             .Italic()
-                                                            .FontColor("#8A6C79");
+                                                            .FontColor("#6B8268");
                                                     }
                                                 });
                                         });
@@ -114,10 +114,10 @@ namespace appFoodMaster_CR.Utilitarios
 
                         page.Footer().PaddingTop(8).Column(col =>
                         {
-                            col.Item().LineHorizontal(1).LineColor("#F8BBD0");
+                            col.Item().LineHorizontal(1).LineColor("#A5D6A7");
                             col.Item().PaddingTop(5).AlignCenter().Text("Reporte generado por FoodMaster_CR")
                                 .FontSize(9)
-                                .FontColor("#A64D79");
+                                .FontColor("#4C7A52");
                         });
                     });
                 }).GeneratePdf();

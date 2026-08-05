@@ -30,21 +30,21 @@ public class ClienteReportePdfService
                     page.Size(PageSizes.A4);
                     page.Margin(25);
                     page.PageColor("#FFFDFE");
-                    page.DefaultTextStyle(x => x.FontSize(10).FontColor("#3F3A3D"));
+                    page.DefaultTextStyle(x => x.FontSize(10).FontColor("#1B3A1E"));
 
                     page.Header().Column(col =>
                     {
-                        col.Item().Background("#FCE4EC").Padding(16).Column(c =>
+                        col.Item().Background("#E8F5E9").Padding(16).Column(c =>
                         {
                             c.Item().Text("FoodMaster_CR")
                                 .FontSize(24)
                                 .Bold()
-                                .FontColor("#D63384");
+                                .FontColor("#1B5E20");
 
                             c.Item().Text("Reporte de Clientes")
                                 .FontSize(15)
                                 .SemiBold()
-                                .FontColor("#7A4E64");
+                                .FontColor("#4C7A52");
 
                             c.Item().PaddingTop(6).Text("Generado: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm"));
                         });
@@ -57,9 +57,9 @@ public class ClienteReportePdfService
                         foreach (var item in lista)
                         {
                             col.Item()
-                                .Background("#FFF1F5")
+                                .Background("#F1F8F1")
                                 .Border(1)
-                                .BorderColor("#F8BBD0")
+                                .BorderColor("#A5D6A7")
                                 .Padding(12)
                                 .Column(c =>
                                 {
@@ -69,7 +69,7 @@ public class ClienteReportePdfService
                                         (item.Nombre + " " + item.PrimerApellido + " " + item.SegundoApellido).Trim())
                                         .Bold()
                                         .FontSize(13)
-                                        .FontColor("#C2185B");
+                                        .FontColor("#1B5E20");
 
                                     c.Item().Text("Identificación: " + item.Identificacion);
                                     c.Item().Text("Teléfono: " + item.Telefono);
@@ -77,28 +77,17 @@ public class ClienteReportePdfService
                                     c.Item().Text("Provincia: " + item.IdProvincia);
                                     c.Item().Text("Dirección: " + item.Direccion);
 
-                                    //c.Item().PaddingTop(6).Text("Fotografía")
-                                    //    .SemiBold()
-                                    //    .FontColor("#A64D79") ;
-
-                                    //c.Item().Height(90).Border(1).BorderColor("#F8BBD0").Background(Colors.White).AlignMiddle().AlignCenter().Element(cont =>
-                                    //{
-                                    //    if (item.Fotografia != null && item.Fotografia.Length > 0)
-                                    //        cont.Image(item.Fotografia);
-                                    //    else
-                                    //        cont.Text("Sin foto").Italic().FontColor("#8A6C79");
-                                    //});
                                     c.Item().Row(row =>
                                     {
-                                        // 🔹 Texto a la izquierda
+                                        // Texto a la izquierda
                                         row.RelativeItem().AlignMiddle().Text("Fotografía")
                                             .SemiBold()
-                                            .FontColor("#A64D79");
+                                            .FontColor("#4C7A52");
 
-                                        // 🔹 Imagen a la derecha
+                                        // Imagen a la derecha
                                         row.ConstantItem(100).Height(90)
                                             .Border(1)
-                                            .BorderColor("#F8BBD0")
+                                            .BorderColor("#A5D6A7")
                                             .Background(Colors.White)
                                             .AlignMiddle()
                                             .AlignCenter()
@@ -112,7 +101,7 @@ public class ClienteReportePdfService
                                                 {
                                                     cont.Text("Sin foto")
                                                         .Italic()
-                                                        .FontColor("#8A6C79");
+                                                        .FontColor("#6B8268");
                                                 }
                                             });
                                     });
@@ -122,10 +111,10 @@ public class ClienteReportePdfService
 
                     page.Footer().PaddingTop(8).Column(col =>
                     {
-                        col.Item().LineHorizontal(1).LineColor("#F8BBD0");
+                        col.Item().LineHorizontal(1).LineColor("#A5D6A7");
                         col.Item().PaddingTop(5).AlignCenter().Text("Reporte generado por FoodMaster_CR")
                             .FontSize(9)
-                            .FontColor("#A64D79");
+                            .FontColor("#4C7A52");
                     });
                 });
             }).GeneratePdf();

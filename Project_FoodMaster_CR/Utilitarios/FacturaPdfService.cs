@@ -42,24 +42,24 @@ namespace appFoodMaster_CR.Layer.Utilitarios
                 {
                     page.Size(PageSizes.A4);
                     page.Margin(28);
-                    page.PageColor("#FFFDFE");
-                    page.DefaultTextStyle(x => x.FontSize(10).FontColor("#3F3A3D"));
+                    page.PageColor("#FFFEFB");
+                    page.DefaultTextStyle(x => x.FontSize(10).FontColor("#33352F"));
 
                     page.Header().Column(col =>
                     {
-                        col.Item().Background("#FCE4EC").Padding(18).Row(row =>
+                        col.Item().Background("#E8F5E9").Padding(18).Row(row =>
                         {
                             row.RelativeItem().Column(c =>
                             {
-                                c.Item().Text("FoodMaster_CR")
+                                c.Item().Text("FoodMaster CR")
                                     .FontSize(26)
                                     .Bold()
-                                    .FontColor("#D63384");
+                                    .FontColor("#1B5E20");
 
                                 c.Item().Text("Factura electrónica")
                                     .FontSize(14)
                                     .SemiBold()
-                                    .FontColor("#7A4E64");
+                                    .FontColor("#4C7A52");
 
                                 c.Item().PaddingTop(8).Text("Número de factura: " + factura.NumeroFactura)
                                     .FontSize(11);
@@ -81,7 +81,7 @@ namespace appFoodMaster_CR.Layer.Utilitarios
                                    .AlignRight()
                                    .Background(Colors.White)
                                    .Border(1)
-                                   .BorderColor("#F8BBD0")
+                                   .BorderColor("#A5D6A7")
                                    .Padding(8)
                                    .Image(qrBytes);
                             }
@@ -92,12 +92,12 @@ namespace appFoodMaster_CR.Layer.Utilitarios
                     {
                         col.Spacing(14);
 
-                        col.Item().Background("#FFF1F5").Border(1).BorderColor("#F8BBD0").Padding(12).Column(c =>
+                        col.Item().Background("#F1F8F1").Border(1).BorderColor("#A5D6A7").Padding(12).Column(c =>
                         {
                             c.Item().Text("Datos del cliente")
                                 .Bold()
                                 .FontSize(13)
-                                .FontColor("#C2185B");
+                                .FontColor("#1B5E20");
 
                             c.Item().PaddingTop(4).Text("Cliente: " + nombreCliente).FontSize(11);
                             c.Item().Text("Cédula: " + cedulaCliente).FontSize(11);
@@ -107,7 +107,7 @@ namespace appFoodMaster_CR.Layer.Utilitarios
                         col.Item().Text("Detalle de factura")
                             .Bold()
                             .FontSize(13)
-                            .FontColor("#C2185B");
+                            .FontColor("#1B5E20");
 
                         col.Item().Table(table =>
                         {
@@ -118,29 +118,28 @@ namespace appFoodMaster_CR.Layer.Utilitarios
                                 columns.RelativeColumn(1);
                                 columns.RelativeColumn(1);
                                 columns.RelativeColumn(1);
-                           
                             });
 
                             table.Header(header =>
                             {
-                                header.Cell().Background("#F8BBD0").BorderBottom(1).BorderColor("#E91E63").Padding(7).Text("Producto").Bold().FontColor("#5A2A42");
-                                header.Cell().Background("#F8BBD0").BorderBottom(1).BorderColor("#E91E63").Padding(7).Text("Descripcion").Bold().FontColor("#5A2A42");
-                                header.Cell().Background("#F8BBD0").BorderBottom(1).BorderColor("#E91E63").Padding(7).AlignCenter().Text("Cantidad").Bold().FontColor("#5A2A42");
-                                header.Cell().Background("#F8BBD0").BorderBottom(1).BorderColor("#E91E63").Padding(7).AlignRight().Text("Precio").Bold().FontColor("#5A2A42");
-                                header.Cell().Background("#F8BBD0").BorderBottom(1).BorderColor("#E91E63").Padding(7).AlignRight().Text("Subtotal").Bold().FontColor("#5A2A42");
+                                header.Cell().Background("#A5D6A7").BorderBottom(1).BorderColor("#2E7D32").Padding(7).Text("Producto").Bold().FontColor("#1B3A1E");
+                                header.Cell().Background("#A5D6A7").BorderBottom(1).BorderColor("#2E7D32").Padding(7).Text("Descripcion").Bold().FontColor("#1B3A1E");
+                                header.Cell().Background("#A5D6A7").BorderBottom(1).BorderColor("#2E7D32").Padding(7).AlignCenter().Text("Cantidad").Bold().FontColor("#1B3A1E");
+                                header.Cell().Background("#A5D6A7").BorderBottom(1).BorderColor("#2E7D32").Padding(7).AlignRight().Text("Precio").Bold().FontColor("#1B3A1E");
+                                header.Cell().Background("#A5D6A7").BorderBottom(1).BorderColor("#2E7D32").Padding(7).AlignRight().Text("Subtotal").Bold().FontColor("#1B3A1E");
                             });
 
                             foreach (var item in detalles)
                             {
-                                table.Cell().BorderBottom(1).BorderColor("#F3D6E1").Padding(7).Text(item.IdProducto);
-                                table.Cell().BorderBottom(1).BorderColor("#F3D6E1").Padding(7).Text(item.NombreProducto);
-                                table.Cell().BorderBottom(1).BorderColor("#F3D6E1").Padding(7).AlignCenter().Text(item.Cantidad.ToString());
-                                table.Cell().BorderBottom(1).BorderColor("#F3D6E1").Padding(7).AlignRight().Text(item.Precio.ToString("N2"));
-                                table.Cell().BorderBottom(1).BorderColor("#F3D6E1").Padding(7).AlignRight().Text(item.Subtotal.ToString("N2"));
+                                table.Cell().BorderBottom(1).BorderColor("#D7ECD7").Padding(7).Text(item.IdProducto);
+                                table.Cell().BorderBottom(1).BorderColor("#D7ECD7").Padding(7).Text(item.NombreProducto);
+                                table.Cell().BorderBottom(1).BorderColor("#D7ECD7").Padding(7).AlignCenter().Text(item.Cantidad.ToString());
+                                table.Cell().BorderBottom(1).BorderColor("#D7ECD7").Padding(7).AlignRight().Text(item.Precio.ToString("N2"));
+                                table.Cell().BorderBottom(1).BorderColor("#D7ECD7").Padding(7).AlignRight().Text(item.Subtotal.ToString("N2"));
                             }
                         });
 
-                        col.Item().AlignRight().Width(250).Background("#FFF1F5").Border(1).BorderColor("#F8BBD0").Padding(10).Table(table =>
+                        col.Item().AlignRight().Width(250).Background("#F1F8F1").Border(1).BorderColor("#A5D6A7").Padding(10).Table(table =>
                         {
                             table.ColumnsDefinition(columns =>
                             {
@@ -154,12 +153,12 @@ namespace appFoodMaster_CR.Layer.Utilitarios
                             AgregarFilaTotal(table, "Total Dólares:", factura.TotalDolares.ToString("N2"), true);
                         });
 
-                        col.Item().PaddingTop(8).Background("#FFF1F5").Border(1).BorderColor("#F8BBD0").Padding(12).Column(c =>
+                        col.Item().PaddingTop(8).Background("#F1F8F1").Border(1).BorderColor("#A5D6A7").Padding(12).Column(c =>
                         {
                             c.Item().Text("Firma del cliente")
                                 .Bold()
                                 .FontSize(13)
-                                .FontColor("#C2185B");
+                                .FontColor("#1B5E20");
 
                             c.Item().PaddingTop(6);
 
@@ -171,17 +170,17 @@ namespace appFoodMaster_CR.Layer.Utilitarios
                             {
                                 c.Item().Height(50).AlignMiddle().AlignCenter().Text("Sin firma registrada")
                                     .Italic()
-                                    .FontColor("#8A6C79");
+                                    .FontColor("#6B8268");
                             }
                         });
                     });
 
                     page.Footer().PaddingTop(8).Column(col =>
                     {
-                        col.Item().LineHorizontal(1).LineColor("#F8BBD0");
-                        col.Item().PaddingTop(5).AlignCenter().Text("Gracias por su compra en FoodMaster_CR")
+                        col.Item().LineHorizontal(1).LineColor("#A5D6A7");
+                        col.Item().PaddingTop(5).AlignCenter().Text("Gracias por su compra en FoodMaster CR")
                             .FontSize(9)
-                            .FontColor("#A64D79");
+                            .FontColor("#4C7A52");
                     });
                 });
             }).GeneratePdf(rutaPdf);
@@ -193,8 +192,8 @@ namespace appFoodMaster_CR.Layer.Utilitarios
         {
             if (negrita)
             {
-                table.Cell().Padding(4).Text(titulo).Bold().FontColor("#C2185B");
-                table.Cell().Padding(4).AlignRight().Text(valor).Bold().FontColor("#C2185B");
+                table.Cell().Padding(4).Text(titulo).Bold().FontColor("#1B5E20");
+                table.Cell().Padding(4).AlignRight().Text(valor).Bold().FontColor("#1B5E20");
             }
             else
             {
@@ -214,5 +213,17 @@ namespace appFoodMaster_CR.Layer.Utilitarios
                 return ms.ToArray();
             }
         }
+
+        // Paleta de colores para la factura con base a los colores del logo por si se me olvida los nombres
+        private const string ColorFuerte = "#1B5E20"; // títulos y subtítulos en negrita
+        private const string ColorSubtitulo = "#4C7A52"; // subtítulo bajo el título
+        private const string ColorFondoHdr = "#E8F5E9"; // fondo del encabezado
+        private const string ColorFondoBox = "#F1F8F1"; // fondo de cajas internas
+        private const string ColorBorde = "#A5D6A7"; // bordes de cajas
+        private const string ColorBordeFuerte = "#2E7D32"; // línea bajo el header de tabla
+        private const string ColorTextoTabla = "#1B3A1E"; // texto del header de tabla
+        private const string ColorBordeFila = "#D7ECD7"; // separador entre filas
+        private const string ColorMuted = "#6B8268"; // "sin firma registrada"
+        private const string ColorFooter = "#4C7A52"; // texto del pie de página
     }
 }
