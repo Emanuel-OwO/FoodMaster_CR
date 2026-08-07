@@ -37,7 +37,7 @@ namespace appFoodMaster_CR.Layer.UI.Mantenimientos
             CargarProvincias();
             txtIdentificacion.TextChanged += txtTipoID_TextChanged;
             CargarUsuarios();
-            
+
             rdoActivo.Checked = true;
             rdoMasculino.Checked = true;
         }
@@ -46,7 +46,9 @@ namespace appFoodMaster_CR.Layer.UI.Mantenimientos
         private void CargarUsuarios()
         {
             dgvDatos.DataSource = null;
-            dgvDatos.DataSource = clienteBLL.SELECTALL();
+            dgvDatos.DataSource = clienteBLL.SELECTALL()
+            .OrderBy(x => x.IdCliente)
+            .ToList();
             dgvDatos.Columns["Fotografia"].Visible = false;
         }
         private void CargarProvincias()
@@ -170,7 +172,7 @@ namespace appFoodMaster_CR.Layer.UI.Mantenimientos
             txtPrimerApellido.Text = row.Cells["PrimerApellido"].Value?.ToString() ?? "";
             txtSegundoApellido.Text = row.Cells["SegundoApellido"].Value?.ToString() ?? "";
 
-          
+
             if (row.Cells["IdProvincia"].Value != null)
             {
                 cmbProvincia.SelectedValue = row.Cells["IdProvincia"].Value;
@@ -180,7 +182,7 @@ namespace appFoodMaster_CR.Layer.UI.Mantenimientos
             txtCorreo.Text = row.Cells["Correo"].Value?.ToString() ?? "";
             txtDescripcion.Text = row.Cells["Direccion"].Value?.ToString() ?? "";
 
-     
+
             if (row.Cells["Fotografia"].Value != null)
             {
                 byte[] fotoBytes = row.Cells["Fotografia"].Value as byte[];
@@ -201,12 +203,12 @@ namespace appFoodMaster_CR.Layer.UI.Mantenimientos
                 pctFoto.Tag = null;
             }
 
-          
+
             bool estado = Convert.ToBoolean(row.Cells["Estado"].Value ?? false);
             rdoActivo.Checked = estado;
             rdoInactivo.Checked = !estado;
 
-           
+
             string sexo = row.Cells["Sexo"].Value?.ToString() ?? "";
             rdoMasculino.Checked = sexo == "M";
             rdoFemenino.Checked = sexo == "F";
@@ -230,15 +232,15 @@ namespace appFoodMaster_CR.Layer.UI.Mantenimientos
 
                 cliente.IdCliente = Convert.ToInt32(dgvDatos.CurrentRow.Cells["IdCliente"].Value);
 
-               
-                cliente.TipoIdentificacion = txtTipoID.Text;          
-                cliente.Identificacion = txtIdentificacion.Text;  
+
+                cliente.TipoIdentificacion = txtTipoID.Text;
+                cliente.Identificacion = txtIdentificacion.Text;
                 cliente.Nombre = txtNombre.Text;
                 cliente.PrimerApellido = txtPrimerApellido.Text;
                 cliente.SegundoApellido = txtSegundoApellido.Text;
                 cliente.IdProvincia = Convert.ToInt32(cmbProvincia.SelectedValue);
                 cliente.Telefono = mskTelefono.Text.Trim().Replace("-", "");
-                cliente.Correo = txtCorreo.Text.Trim();   
+                cliente.Correo = txtCorreo.Text.Trim();
                 cliente.Direccion = txtDescripcion.Text;
                 cliente.Fotografia = (byte[])pctFoto.Tag;
                 cliente.Estado = rdoActivo.Checked;
@@ -298,7 +300,7 @@ namespace appFoodMaster_CR.Layer.UI.Mantenimientos
 
             MessageBox.Show("Cliente agregado correctamente");
 
-            CargarUsuarios(); 
+            CargarUsuarios();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
