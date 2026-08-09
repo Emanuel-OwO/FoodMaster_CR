@@ -27,6 +27,8 @@ namespace appFoodMaster_CR.Layer.UI.Mantenimientos
 
         private void frmMantenimientoTipoProducto_Load(object sender, EventArgs e)
         {
+            txtID_Dispositivo.ReadOnly = true;
+
             CargarDatos();
         }
 

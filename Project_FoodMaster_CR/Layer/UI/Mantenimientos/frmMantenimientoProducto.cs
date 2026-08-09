@@ -34,6 +34,7 @@ namespace appFoodMaster_CR.Layer.UI.Mantenimientos
             CargarCombos();
             CargarDesdeGrid();
             rdoActivo.Enabled = true;
+            txtCodigoBarras.ReadOnly = true;
         }
 
 
@@ -177,8 +178,8 @@ namespace appFoodMaster_CR.Layer.UI.Mantenimientos
             txtStock.Text = "0";
             txtCalorias.Clear();
             txtPeso.Clear();
+            txtCodigoBarras.Text = GenerarCodigoBarras();
 
-          
 
             rdoActivo.Checked = true;
             rdoInactivo.Checked = false;
@@ -343,5 +344,21 @@ namespace appFoodMaster_CR.Layer.UI.Mantenimientos
                 MessageBox.Show("Error al seleccionar producto: " + ex.Message);
             }
         }
+
+        private readonly Random _random = new Random();
+
+        private string GenerarCodigoBarras()
+        {
+            // El primer dígito no puede ser 0, para que siempre tenga 10 dígitos "reales"
+            string codigo = _random.Next(1, 10).ToString();
+
+            for (int i = 0; i < 9; i++)
+            {
+                codigo += _random.Next(0, 10).ToString();
+            }
+
+            return codigo; // ej: 7849561203
+        }
+
     }
 }
