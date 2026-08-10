@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -358,6 +359,64 @@ namespace appFoodMaster_CR.Layer.UI.Mantenimientos
             }
 
             return codigo; // ej: 7849561203
+        }
+
+        private void btnMostrarDoc_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Verificar que haya un documento cargado en el Tag del PictureBox
+                if (pctDocumento.Tag == null)
+                {
+                    MessageBox.Show("No hay ningún documento guardado para este producto.");
+                    return;
+                }
+
+                byte[] documentoBytes = (byte[])pctDocumento.Tag;
+
+                // Necesitamos saber la extensión para que Windows sepa cómo abrirlo
+                // Como no la guardamos aparte, detectamos por los primeros bytes (firma del archivo)
+                string extension = ObtenerExtension(documentoBytes);
+
+                // Crear una ruta temporal única para no sobrescribir otros archivos
+                string rutaTemporal = Path.Combine(Path.GetTempPath(),
+                    $"DocumentoProducto_{DateTime.Now:yyyyMMddHHmmss}{extension}");
+
+                // Escribir los bytes al archivo temporal
+                File.WriteAllBytes(rutaTemporal, documentoBytes);
+
+                // Abrir con el programa predeterminado del sistema
+                ProcessStartInfo psi = new ProcessStartInfo
+                {
+                    FileName = rutaTemporal,
+                    UseShellExecute = true
+                };
+                Process.Start(psi);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir el documento: " + ex.Message);
+            }
+        }
+
+        private string ObtenerExtension(byte[] archivo)
+        {
+            // PDF empieza con "%PDF" -> 25 50 44 46
+            if (archivo.Length >= 4 &&
+                archivo[0] == 0x25 && archivo[1] == 0x50 &&
+                archivo[2] == 0x44 && archivo[3] == 0x46)
+            {
+                return ".pdf";
+            }
+
+            // DOCX (y otros Office nuevos) son ZIP -> empiezan con "PK"
+            if (archivo.Length >= 2 && archivo[0] == 0x50 && archivo[1] == 0x4B)
+            {
+                return ".docx";
+            }
+
+            // Si no se reconoce, usar .docx como default (o podrías usar .bin)
+            return ".docx";
         }
 
     }

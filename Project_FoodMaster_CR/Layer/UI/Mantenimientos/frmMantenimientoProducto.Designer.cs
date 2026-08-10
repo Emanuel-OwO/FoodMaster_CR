@@ -63,6 +63,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dgvDatos = new System.Windows.Forms.DataGridView();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.btnMostrarDoc = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pctDocumento)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctFoto)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -349,11 +350,22 @@
             this.statusStrip1.TabIndex = 159;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // btnMostrarDoc
+            // 
+            this.btnMostrarDoc.Location = new System.Drawing.Point(459, 460);
+            this.btnMostrarDoc.Name = "btnMostrarDoc";
+            this.btnMostrarDoc.Size = new System.Drawing.Size(90, 36);
+            this.btnMostrarDoc.TabIndex = 190;
+            this.btnMostrarDoc.Text = "Mostrar Documento";
+            this.btnMostrarDoc.UseVisualStyleBackColor = true;
+            this.btnMostrarDoc.Click += new System.EventHandler(this.btnMostrarDoc_Click);
+            // 
             // frmMantenimientoProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1082, 763);
+            this.Controls.Add(this.btnMostrarDoc);
             this.Controls.Add(this.cmbTipoProducto);
             this.Controls.Add(this.txtPeso);
             this.Controls.Add(this.txtCalorias);
@@ -430,5 +442,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvDatos;
         private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.Button btnMostrarDoc;
     }
 }
