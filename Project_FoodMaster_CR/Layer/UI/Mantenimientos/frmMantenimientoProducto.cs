@@ -46,6 +46,84 @@ namespace appFoodMaster_CR.Layer.UI.Mantenimientos
         {
             try
             {
+                // Validar campos obligatorios
+                if (string.IsNullOrWhiteSpace(txtCodigoInterno.Text) ||
+                    string.IsNullOrWhiteSpace(txtCaracteristicas.Text) ||
+                    string.IsNullOrWhiteSpace(txtPeso.Text) ||
+                    string.IsNullOrWhiteSpace(txtCalorias.Text) ||
+                    string.IsNullOrWhiteSpace(txtPrecio.Text) ||
+                    string.IsNullOrWhiteSpace(txtStock.Text))
+                {
+                    MessageBox.Show(
+                        "No se puede agregar el producto porque faltan datos.\n\n" +
+                        "Por favor, complete todos los campos necesarios.",
+                        "Datos incompletos",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    return;
+                }
+
+                // Validar que se haya seleccionado un tipo de producto
+                if (cmbTipoProducto.SelectedValue == null)
+                {
+                    MessageBox.Show(
+                        "Debe seleccionar un tipo de producto.",
+                        "Dato requerido",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    return;
+                }
+
+                // Validar peso
+                if (!double.TryParse(txtPeso.Text, out double peso) || peso <= 0)
+                {
+                    MessageBox.Show(
+                        "El peso debe ser un número mayor que 0.",
+                        "Dato inválido",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    return;
+                }
+
+                // Validar calorías
+                if (!int.TryParse(txtCalorias.Text, out int calorias) || calorias < 0)
+                {
+                    MessageBox.Show(
+                        "Las calorías deben ser un número válido.",
+                        "Dato inválido",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    return;
+                }
+
+                // Validar precio
+                if (!double.TryParse(txtPrecio.Text, out double precio) || precio <= 0)
+                {
+                    MessageBox.Show(
+                        "El precio debe ser un número mayor que 0.",
+                        "Dato inválido",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    return;
+                }
+
+                // Validar stock
+                if (!int.TryParse(txtStock.Text, out int stock) || stock < 0)
+                {
+                    MessageBox.Show(
+                        "El stock debe ser un número entero igual o mayor que 0.",
+                        "Dato inválido",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    return;
+                }
+
                 Producto producto = new Producto();
                 producto.CodigoInterno = txtCodigoInterno.Text;
                 producto.CodigoBarras = txtCodigoBarras.Text;
@@ -58,7 +136,7 @@ namespace appFoodMaster_CR.Layer.UI.Mantenimientos
 
                 producto.Precio = Convert.ToDouble(txtPrecio.Text);
                 //Hice la variable stock para evitar errores si escriben letras
-                int stock = 0;
+                //int stock = 0;
                 int.TryParse(txtStock.Text, out stock);
                 producto.CantidadStock = stock;
 
@@ -84,6 +162,96 @@ namespace appFoodMaster_CR.Layer.UI.Mantenimientos
         {
             try
             {
+                // Validar que se haya seleccionado un producto
+                if (dgvDatos.CurrentRow == null)
+                {
+                    MessageBox.Show(
+                        "No se puede editar el producto porque no ha seleccionado ningún producto.",
+                        "Producto no seleccionado",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    return;
+                }
+
+                // Validar campos obligatorios
+                if (string.IsNullOrWhiteSpace(txtCodigoInterno.Text) ||
+                    string.IsNullOrWhiteSpace(txtCaracteristicas.Text) ||
+                    string.IsNullOrWhiteSpace(txtPeso.Text) ||
+                    string.IsNullOrWhiteSpace(txtCalorias.Text) ||
+                    string.IsNullOrWhiteSpace(txtPrecio.Text) ||
+                    string.IsNullOrWhiteSpace(txtStock.Text))
+                {
+                    MessageBox.Show(
+                        "No se puede actualizar el producto porque faltan datos.\n\n" +
+                        "Por favor, complete todos los campos necesarios.",
+                        "Datos incompletos",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    return;
+                }
+
+                // Validar tipo de producto
+                if (cmbTipoProducto.SelectedValue == null)
+                {
+                    MessageBox.Show(
+                        "Debe seleccionar un tipo de producto.",
+                        "Dato requerido",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    return;
+                }
+
+                // Validar peso
+                if (!double.TryParse(txtPeso.Text, out double peso) || peso <= 0)
+                {
+                    MessageBox.Show(
+                        "El peso debe ser un número mayor que 0.",
+                        "Dato inválido",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    return;
+                }
+
+                // Validar calorías
+                if (!int.TryParse(txtCalorias.Text, out int calorias) || calorias < 0)
+                {
+                    MessageBox.Show(
+                        "Las calorías deben ser un número válido.",
+                        "Dato inválido",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    return;
+                }
+
+                // Validar precio
+                if (!double.TryParse(txtPrecio.Text, out double precio) || precio <= 0)
+                {
+                    MessageBox.Show(
+                        "El precio debe ser un número mayor que 0.",
+                        "Dato inválido",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    return;
+                }
+
+                // Validar stock
+                if (!int.TryParse(txtStock.Text, out int stock) || stock < 0)
+                {
+                    MessageBox.Show(
+                        "El stock debe ser un número entero igual o mayor que 0.",
+                        "Dato inválido",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    return;
+                }
+
                 if (dgvDatos.CurrentRow == null)
                 {
                     MessageBox.Show("Seleccione un producto");
@@ -125,20 +293,53 @@ namespace appFoodMaster_CR.Layer.UI.Mantenimientos
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (dgvDatos.CurrentRow != null)
+            // Validar que se haya seleccionado un producto
+            if (dgvDatos.SelectedRows.Count == 0)
             {
-                int id = Convert.ToInt32(dgvDatos.CurrentRow.Cells["IdProducto"].Value);
+                MessageBox.Show(
+                    "Debe seleccionar un producto para poder eliminarlo.",
+                    "Producto no seleccionado",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return;
+            }
+
+            try
+            {
+                int id = Convert.ToInt32(
+                    dgvDatos.SelectedRows[0].Cells["IdProducto"].Value);
+
+                // Confirmar eliminación
+                DialogResult resultado = MessageBox.Show(
+                    "¿Está seguro de que desea eliminar el producto seleccionado?",
+                    "Confirmar eliminación",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (resultado != DialogResult.Yes)
+                {
+                    return;
+                }
 
                 _ojbBLLProducto.DELETE(id);
 
-                MessageBox.Show("Producto eliminado correctamente");
+                MessageBox.Show(
+                    "Producto eliminado correctamente.",
+                    "Producto eliminado",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
 
                 CargarDatos();
                 LimpiarCampos();
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Debe seleccionar un producto");
+                MessageBox.Show(
+                    "Error al eliminar el producto: " + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
         }
 
