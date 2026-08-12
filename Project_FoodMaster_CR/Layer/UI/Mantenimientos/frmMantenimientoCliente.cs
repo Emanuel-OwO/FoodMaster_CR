@@ -228,6 +228,63 @@ namespace appFoodMaster_CR.Layer.UI.Mantenimientos
         {
             try
             {
+
+                // Validar que se haya seleccionado un cliente
+                if (dgvDatos.CurrentRow == null)
+                {
+                    MessageBox.Show(
+                        "No se puede editar el cliente porque no ha seleccionado ningún cliente.",
+                        "Cliente no seleccionado",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    return;
+                }
+
+                // Validar que existan datos para editar
+                if (string.IsNullOrWhiteSpace(txtIdentificacion.Text) ||
+                    string.IsNullOrWhiteSpace(txtTipoID.Text) ||
+                    string.IsNullOrWhiteSpace(txtNombre.Text) ||
+                    string.IsNullOrWhiteSpace(txtPrimerApellido.Text) ||
+                    string.IsNullOrWhiteSpace(txtSegundoApellido.Text) ||
+                    string.IsNullOrWhiteSpace(mskTelefono.Text) ||
+                    string.IsNullOrWhiteSpace(txtCorreo.Text) ||
+                    string.IsNullOrWhiteSpace(txtDescripcion.Text))
+                {
+                    MessageBox.Show(
+                        "No se puede actualizar el cliente porque faltan datos.\n\n" +
+                        "Por favor, complete todos los campos necesarios.",
+                        "Datos incompletos",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    return;
+                }
+
+                // Validar provincia
+                if (cmbProvincia.SelectedValue == null)
+                {
+                    MessageBox.Show(
+                        "Debe seleccionar una provincia.",
+                        "Dato requerido",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    return;
+                }
+
+                // Validar sexo
+                if (!rdoMasculino.Checked && !rdoFemenino.Checked)
+                {
+                    MessageBox.Show(
+                        "Debe seleccionar el sexo.",
+                        "Dato requerido",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    return;
+                }
+
                 Cliente cliente = new Cliente();
 
                 cliente.IdCliente = Convert.ToInt32(dgvDatos.CurrentRow.Cells["IdCliente"].Value);
@@ -270,6 +327,50 @@ namespace appFoodMaster_CR.Layer.UI.Mantenimientos
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            // Validar que existan datos para crear el cliente
+            if (string.IsNullOrWhiteSpace(txtIdentificacion.Text) ||
+                string.IsNullOrWhiteSpace(txtTipoID.Text) ||
+                string.IsNullOrWhiteSpace(txtNombre.Text) ||
+                string.IsNullOrWhiteSpace(txtPrimerApellido.Text) ||
+                string.IsNullOrWhiteSpace(txtSegundoApellido.Text) ||
+                string.IsNullOrWhiteSpace(mskTelefono.Text) ||
+                string.IsNullOrWhiteSpace(txtCorreo.Text) ||
+                string.IsNullOrWhiteSpace(txtDescripcion.Text))
+            {
+                MessageBox.Show(
+                    "No se puede agregar el cliente porque faltan datos.\n\n" +
+                    "Por favor, complete todos los campos necesarios.",
+                    "Datos incompletos",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return;
+            }
+
+            // Validar provincia
+            if (cmbProvincia.SelectedValue == null)
+            {
+                MessageBox.Show(
+                    "Debe seleccionar una provincia.",
+                    "Dato requerido",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return;
+            }
+
+            // Validar sexo
+            if (!rdoMasculino.Checked && !rdoFemenino.Checked)
+            {
+                MessageBox.Show(
+                    "Debe seleccionar el sexo del cliente.",
+                    "Dato requerido",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return;
+            }
+
             //Boton Agregar
             Cliente cliente = new Cliente();
 
@@ -305,21 +406,54 @@ namespace appFoodMaster_CR.Layer.UI.Mantenimientos
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (dgvDatos.CurrentRow != null)
+            // Validar que se haya seleccionado un cliente
+            if (dgvDatos.SelectedRows.Count == 0)
             {
-                int id = Convert.ToInt32(dgvDatos.CurrentRow.Cells["IdCliente"].Value);
+                MessageBox.Show(
+                    "Debe seleccionar un cliente para poder eliminarlo.",
+                    "Cliente no seleccionado",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return;
+            }
+
+            try
+            {
+                int id = Convert.ToInt32(
+                    dgvDatos.SelectedRows[0].Cells["IdCliente"].Value);
+
+                // Confirmar eliminación
+                DialogResult resultado = MessageBox.Show(
+                    "¿Está seguro de que desea eliminar el cliente seleccionado?",
+                    "Confirmar eliminación",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (resultado != DialogResult.Yes)
+                {
+                    return;
+                }
 
                 BLLCliente clienteBLL = new BLLCliente();
                 clienteBLL.DELETE(id);
 
-                MessageBox.Show("Cliente eliminado correctamente");
+                MessageBox.Show(
+                    "Cliente eliminado correctamente.",
+                    "Cliente eliminado",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
 
                 CargarUsuarios();
                 LimpiarCampos();
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Debe seleccionar un cliente");
+                MessageBox.Show(
+                    "Error al eliminar el cliente: " + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
         }
 

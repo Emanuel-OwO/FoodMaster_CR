@@ -106,5 +106,10 @@ namespace appFoodMaster_CR.Layer.UI.Seguridad
         {
             this.Close();
         }
+
+        private void AboutEmpresa_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
