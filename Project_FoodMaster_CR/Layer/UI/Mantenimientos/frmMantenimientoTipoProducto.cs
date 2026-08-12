@@ -36,6 +36,18 @@ namespace appFoodMaster_CR.Layer.UI.Mantenimientos
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(txtDescripcion.Text))
+                {
+                    MessageBox.Show(
+                        "No se puede agregar el tipo de producto porque falta la descripción.\n\n" +
+                        "Por favor, ingrese una descripción.",
+                        "Datos incompletos",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    return;
+                }
+
                 TipoProducto tipo = new TipoProducto();
 
                 tipo.IdTipoProducto = Convert.ToInt32(dgvDatos.CurrentRow.Cells["IdTipoProducto"].Value);
@@ -51,7 +63,9 @@ namespace appFoodMaster_CR.Layer.UI.Mantenimientos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("Error: " + ex.Message, "Error",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
             }
         }
 
@@ -59,6 +73,20 @@ namespace appFoodMaster_CR.Layer.UI.Mantenimientos
         {
             try
             {
+
+                // Validar que la descripción tenga datos
+                if (string.IsNullOrWhiteSpace(txtDescripcion.Text))
+                {
+                    MessageBox.Show(
+                        "No se puede actualizar el tipo de producto porque falta la descripción.\n\n" +
+                        "Por favor, ingrese una descripción.",
+                        "Datos incompletos",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    return;
+                }
+
                 if (dgvDatos.CurrentRow == null)
                 {
                     MessageBox.Show("Seleccione un registro");
@@ -87,20 +115,53 @@ namespace appFoodMaster_CR.Layer.UI.Mantenimientos
         private void btnEliminar_Click(object sender, EventArgs e)
         {
 
-            if (dgvDatos.CurrentRow != null)
+            // Validar que se haya seleccionado un tipo de producto
+            if (dgvDatos.SelectedRows.Count == 0)
             {
-                int id = Convert.ToInt32(dgvDatos.CurrentRow.Cells["IdTipoProducto"].Value);
+                MessageBox.Show(
+                    "Debe seleccionar un registro para poder eliminarlo.",
+                    "Registro no seleccionado",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return;
+            }
+
+            try
+            {
+                int id = Convert.ToInt32(
+                    dgvDatos.SelectedRows[0].Cells["IdTipoProducto"].Value);
+
+                // Confirmar eliminación
+                DialogResult resultado = MessageBox.Show(
+                    "¿Está seguro de que desea eliminar el tipo de producto seleccionado?",
+                    "Confirmar eliminación",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (resultado != DialogResult.Yes)
+                {
+                    return;
+                }
 
                 _objBLLTipoProducto.DELETE(id);
 
-                MessageBox.Show("TipoProducto eliminado correctamente");
+                MessageBox.Show(
+                    "Tipo de producto eliminado correctamente.",
+                    "Tipo de producto eliminado",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
 
                 CargarDatos();
                 LimpiarCampos();
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Debe seleccionar un registro");
+                MessageBox.Show(
+                    "Error al eliminar el tipo de producto: " + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
         }
 
