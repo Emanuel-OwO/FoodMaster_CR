@@ -103,20 +103,53 @@ namespace appFoodMaster_CR.Layer.UI.Mantenimientos
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (dgvDatos.CurrentRow != null)
+            // Validar que se haya seleccionado un impuesto
+            if (dgvDatos.SelectedRows.Count == 0)
             {
-                DateTime fecha = Convert.ToDateTime(dgvDatos.CurrentRow.Cells["Fecha"].Value);
+                MessageBox.Show(
+                    "Debe seleccionar un registro para poder eliminarlo.",
+                    "Registro no seleccionado",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return;
+            }
+
+            try
+            {
+                DateTime fecha = Convert.ToDateTime(
+                    dgvDatos.SelectedRows[0].Cells["Fecha"].Value);
+
+                // Confirmar eliminación
+                DialogResult resultado = MessageBox.Show(
+                    "¿Está seguro de que desea eliminar el impuesto seleccionado?",
+                    "Confirmar eliminación",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (resultado != DialogResult.Yes)
+                {
+                    return;
+                }
 
                 _objBLLImpuesto.DELETE(fecha);
 
-                MessageBox.Show("Impuesto eliminado correctamente");
+                MessageBox.Show(
+                    "Impuesto eliminado correctamente.",
+                    "Impuesto eliminado",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
 
                 CargarDatos();
                 LimpiarCampos();
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Debe seleccionar un registro");
+                MessageBox.Show(
+                    "Error al eliminar el impuesto: " + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
         }
 
